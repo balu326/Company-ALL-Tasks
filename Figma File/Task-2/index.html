@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cryptous</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="container">
+      <div class="logo">
+        <img src="logo.png" alt="Cryptous Logo">
+        <span>Cryptous</span>
+      </div>
+
+      <!-- Hamburger for Mobile -->
+      <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
+
+      <nav class="nav-menu">
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="company.html">Company</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="pricing.html">Pricing</a></li>
+          <li><a href="team.html">Team</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="blog.html" class="active">Blog</a></li>
+        </ul>
+      </nav>
+
+      <a href="#" class="btn-outline">Trade Now</a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container hero-container">
+      <div class="hero-text">
+        <h1>Make better business<br>with Cryptocurrency</h1>
+        <p>We offer users a fully operational long-term rental platform.<br>It leverages blockchain technology.</p>
+        <a href="#" class="btn">Get Whitelisted</a>
+      </div>
+      <div class="hero-image">
+        <img src="illu.png" alt="Crypto Illustration">
+      </div>
+    </div>
+    <div class="scroll-indicator"><span></span></div>
+  </section>
+
+  <!-- Prices Section -->
+  <section class="prices">
+    <h2>Today's Cryptocurrency Prices</h2>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>24h %</th>
+            <th>7d %</th>
+            <th>Market Cap</th>
+            <th>Volume(24h)</th>
+            <th>Last 7 Days</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td><img src="bit.png" class="coin-icon"> Bitcoin <span class="symbol">BTC</span></td>
+            <td>$55,206.61</td>
+            <td class="up">▲ 0.92%</td>
+            <td class="up">▲ 15.86%</td>
+            <td>$1,046,899,935,348</td>
+            <td>$653,452 BTC</td>
+            <td><img src="up1.png" class="chart"></td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td><img src="rth.png" class="coin-icon"> Ethereum <span class="symbol">ETH</span></td>
+            <td>$3,506.21</td>
+            <td class="down">▼ 0.45%</td>
+            <td class="up">▲ 8.12%</td>
+            <td>$402,899,935,348</td>
+            <td>$213,452 ETH</td>
+            <td><img src="up1.png" class="chart"></td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td><img src="ava.png" class="coin-icon"> Cardano <span class="symbol">ADA</span></td>
+            <td>$2.15</td>
+            <td class="down">▼ 1.12%</td>
+            <td class="down">▼ 4.86%</td>
+            <td>$69,899,935,348</td>
+            <td>$53,452 ADA</td>
+            <td><img src="up1.png" class="chart"></td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td><img src="trt.png" class="coin-icon"> Tether <span class="symbol">USDT</span></td>
+            <td>$1.00</td>
+            <td class="up">▲ 0.01%</td>
+            <td class="up">▲ 0.05%</td>
+            <td>$89,899,935,348</td>
+            <td>$23,452 USDT</td>
+            <td><img src="up2-removebg-preview.png" class="chart"></td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td><img src="ava.png" class="coin-icon"> Avalanche <span class="symbol">AVAX</span></td>
+            <td>$55.20</td>
+            <td class="down">▼ 0.92%</td>
+            <td class="up">▲ 3.21%</td>
+            <td>$25,899,935,348</td>
+            <td>$12,452 AVAX</td>
+            <td><img src="up2-removebg-preview.png" class="chart"></td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td><img src="download.png" class="coin-icon"> Algorand <span class="symbol">ALGO</span></td>
+            <td>$1.02</td>
+            <td class="up">▲ 2.14%</td>
+            <td class="down">▼ 0.56%</td>
+            <td>$6,899,935,348</td>
+            <td>$9,452 ALGO</td>
+            <td><img src="up1.png" class="chart"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features">
+    <h2>The most trusted cryptocurrency platform</h2>
+    <div class="features-container">
+      <div class="feature">
+        <img src="Screenshot 2025-08-22 141423.png" alt="Ease of Trading">
+        <h3>Ease of Trading</h3>
+        <p>Intuitive interface<br>Instant deposit options<br>Cash out directly to your bank account</p>
+      </div>
+      <div class="feature">
+        <img src="Screenshot 2025-08-22 141433.png" alt="Institutional Security">
+        <h3>Institutional-grade Security</h3>
+        <p>98% of assets stored safely offline<br>Highly encrypted personal data<br>Whitelisting and confirmations</p>
+      </div>
+      <div class="feature">
+        <img src="Screenshot 2025-08-22 141442.png" alt="Reliability">
+        <h3>Proven Reliability</h3>
+        <p>Exchanging bitcoin since 2011<br>Industry-leading uptime<br>24/7 dedicated support</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- App Download Section -->
+  <section class="app-download">
+    <div class="app-text">
+      <h2>Try the future, today.<br><strong>Download Crypto</strong></h2>
+      <p>Stay connected to the market with our mobile app. Featuring advanced order types and analytical tools for experienced traders, as well as a simple buy & sell interface for those just getting started.</p>
+      <div class="store-buttons">
+        <a href="#"><img src="app.png" alt="Download on App Store"></a>
+        <a href="#"><img src="gplay.png" alt="Get it on Google Play"></a>
+      </div>
+    </div>
+    <div class="app-image">
+      <img src="phone.png" alt="App Preview">
+    </div>
+  </section>
+
+  <!-- Blog Section -->
+  <section class="blog">
+    <h2>Learn to thrive</h2>
+    <div class="blog-container">
+      <div class="blog-card">
+        <img src="1.png" alt="Blog 1">
+        <div class="blog-content">
+          <h3>New Leveraged Pairs Added</h3>
+          <p>We urge everyone adopt good cybersecurity habits, and use unique passwords...</p>
+          <span>By: Jennia Peris | 15/07/2021 | 5 Min read</span>
+        </div>
+      </div>
+      <div class="blog-card">
+        <img src="2.png" alt="Blog 2">
+        <div class="blog-content">
+          <h3>Understanding Bitcoin</h3>
+          <p>Learn how Bitcoin works and why it's reshaping the financial industry...</p>
+          <span>By: John Smith | 12/07/2021 | 7 Min read</span>
+        </div>
+      </div>
+      <div class="blog-card">
+        <img src="3.png" alt="Blog 3">
+        <div class="blog-content">
+          <h3>Future of Crypto</h3>
+          <p>Experts discuss the potential of blockchain and cryptocurrency for global trade...</p>
+          <span>By: Sarah Lee | 10/07/2021 | 6 Min read</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="newsletter">
+    <h2>Never miss a drop</h2>
+    <p>Subscribe for the latest news, drops & collectibles</p>
+    <form>
+      <input type="email" placeholder="Enter your email address">
+      <button type="submit">Subscribe</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div>
+        <h4>Company</h4>
+        <p>About us</p>
+        <p>Terms of use</p>
+        <p>Privacy Policy</p>
+        <p>Disclaimer</p>
+      </div>
+      <div>
+        <h4>Businesses</h4>
+        <p>Prime</p>
+        <p>Custody</p>
+        <p>Asset Hub</p>
+        <p>Commerce</p>
+      </div>
+      <div>
+        <h4>Exchange</h4>
+        <p>Exchange Home</p>
+        <p>Margin Trading</p>
+        <p>Derivatives Trading</p>
+        <p>Trading Arena</p>
+      </div>
+      <div>
+        <h4>Blockchain</h4>
+        <p>Chain Explorer</p>
+        <p>The Syndicate</p>
+        <p>Security</p>
+        <p>Cryptous Credit</p>
+      </div>
+      <div>
+        <h4>Resources</h4>
+        <p>Prices</p>
+        <p>Site Widgets</p>
+        <p>Tax</p>
+        <p>Blog</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.querySelector(".nav-menu").classList.toggle("active");
+    }
+  </script>
+</body>
+</html>

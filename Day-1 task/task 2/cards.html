@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Services</title>
+<style>
+body {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    background: linear-gradient(120deg, #f8f9fa, #e0f7fa);
+    padding: 40px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 36px;
+    color: #222;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.card {
+    background: linear-gradient(145deg, #ffffff, #f0f0f0);
+    width: 320px;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.4s ease, box-shadow 0.4s ease, border 0.4s ease;
+    border: 3px solid transparent;
+    position: relative;
+}
+
+.card:hover {
+    transform: translateY(-12px) scale(1.03);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+    border-image: linear-gradient(45deg, #4a148c, #ff5722) 1;
+}
+
+.card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+.card:hover img {
+    transform: scale(1.05);
+    filter: brightness(0.9);
+}
+
+.card h3 {
+    font-size: 24px;
+    margin: 15px 0 10px;
+    color: #4a148c;
+}
+
+.card p {
+    padding: 0 20px;
+    font-size: 15px;
+    color: #444;
+    line-height: 1.5;
+}
+
+.card a {
+    display: inline-block;
+    margin: 18px 0 25px;
+    padding: 12px 25px;
+    background: linear-gradient(45deg, #4a148c, #ff5722);
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+.card a:hover {
+    background: linear-gradient(45deg, #ff5722, #4a148c);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+</style>
+</head>
+<body>
+
+<h1>Our Services</h1>
+<div class="container">
+
+    <div class="card">
+        <img src="images//1.jpg" alt="Web Design">
+        <h3>Web Design</h3>
+        <p>We create visually stunning, user-friendly website designs that are responsive and impactful for your brand.</p>
+        <a href="webdesign.html">Learn More</a>
+    </div>
+
+    <div class="card">
+        <img src="images//2.jpg" alt="Web Development">
+        <h3>Web Development</h3>
+        <p>Our development team builds high-performance websites with modern technologies and robust functionality.</p>
+        <a href="webdevelopment.html">Learn More</a>
+    </div>
+
+    <div class="card">
+        <img src="images//3.jpeg" alt="UI/UX Design">
+        <h3>UI/UX Design</h3>
+        <p>We craft intuitive, engaging user interfaces and experiences that keep visitors connected to your brand.</p>
+        <a href="uiux.html">Learn More</a>
+    </div>
+
+</div>
+
+</body>
+</html>

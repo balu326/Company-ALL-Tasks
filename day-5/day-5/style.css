@@ -1,0 +1,183 @@
+/* ===== CSS Variables ===== */
+:root {
+  --primary: #ff6ec7;
+  --secondary: #6a11cb;
+  --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+  --text-dark: #222;
+  --text-light: #fff;
+  --shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+  --radius: 1.5rem;
+  --transition: all 0.4s ease;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ===== Profile Section ===== */
+.profile-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+/* ===== Profile Card ===== */
+.profile-card {
+  background: #fff;
+  border-radius: var(--radius);
+  padding: 2rem;
+  max-width: 350px;
+  text-align: center;
+  position: relative;
+  box-shadow: var(--shadow);
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+  overflow: hidden;
+}
+
+/* Floating hover effect */
+.profile-card:hover {
+  transform: translateY(-15px) scale(1.03);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+}
+
+/* Animated gradient border */
+.profile-card::before {
+  content: "";
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  background: linear-gradient(45deg, #ff6ec7, #6a11cb, #2575fc, #ff6ec7);
+  background-size: 400% 400%;
+  z-index: -1;
+  border-radius: calc(var(--radius) + 5px);
+  animation: borderMove 6s linear infinite;
+}
+
+@keyframes borderMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ===== Profile Image ===== */
+.profile-image img {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 6px solid #fff;
+  box-shadow: 0 0 20px rgba(255, 110, 199, 0.6);
+  margin-bottom: 1rem;
+  transition: var(--transition);
+}
+
+.profile-image img:hover {
+  transform: rotate(5deg) scale(1.1);
+  box-shadow: 0 0 25px rgba(106, 17, 203, 0.7);
+}
+
+/* ===== Text ===== */
+.name {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.role {
+  font-size: 1.2rem;
+  color: var(--text-dark);
+  margin-bottom: 1rem;
+}
+
+.description {
+  font-size: 0.95rem;
+  color: var(--text-dark);
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+/* ===== Social Links ===== */
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.social-links a {
+  font-size: 1.6rem;
+  text-decoration: none;
+  color: var(--secondary);
+  transition: var(--transition);
+  display: inline-block;
+}
+
+.social-links a:hover {
+  transform: translateY(-5px) scale(1.2) rotate(8deg);
+  color: var(--primary);
+}
+
+/* ===== Button ===== */
+.cta {
+  padding: 0.8rem 1.8rem;
+  border: none;
+  border-radius: 2rem;
+  background: var(--gradient);
+  color: var(--text-light);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.cta::after {
+  content: "";
+  position: absolute;
+  left: -50%;
+  top: 0;
+  width: 200%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: skewX(-30deg);
+  transition: 0.5s;
+}
+
+.cta:hover::after {
+  left: 150%;
+}
+
+.cta:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow);
+}
+
+/* ===== Responsive Design ===== */
+@media (max-width: 768px) {
+  .profile-card {
+    max-width: 90%;
+    padding: 1.5rem;
+  }
+
+  .name {
+    font-size: 1.3rem;
+  }
+
+  .description {
+    font-size: 0.9rem;
+  }
+}

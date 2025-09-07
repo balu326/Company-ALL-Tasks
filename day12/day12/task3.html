@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dice Roller Simulator</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      transition: background-color 0.5s ease;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    button {
+      padding: 12px 25px;
+      font-size: 18px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-bottom: 20px;
+      background-color: #333;
+      color: white;
+      transition: transform 0.2s;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+    }
+
+    #result {
+      font-size: 24px;
+      font-weight: bold;
+      margin-top: 15px;
+    }
+
+    #emoji {
+      font-size: 80px;
+      margin-top: 10px;
+      display: inline-block;
+    }
+
+    
+    .rolling {
+      animation: shake 0.6s linear infinite;
+    }
+
+    @keyframes shake {
+      0% { transform: rotate(0deg); }
+      25% { transform: rotate(15deg); }
+      50% { transform: rotate(-15deg); }
+      75% { transform: rotate(10deg); }
+      100% { transform: rotate(0deg); }
+    }
+  </style>
+</head>
+<body>
+  <h1>🎲 Dice Roller Simulator</h1>
+  <button onclick="rollDice()">Roll Dice</button>
+  <p id="result">Click the button to roll!</p>
+  <div id="emoji">🎲</div>
+
+  <script>
+    function rollDice() {
+      let result = document.getElementById("result");
+      let emoji = document.getElementById("emoji");
+
+
+      emoji.classList.add("rolling");
+      result.textContent = "Rolling... 🎲";
+
+
+      setTimeout(() => {
+        let number = Math.floor(Math.random() * 6) + 1;
+        let diceFaces = ["⚀","⚁","⚂","⚃","⚄","⚅"];
+
+        emoji.classList.remove("rolling");
+        emoji.textContent = diceFaces[number - 1];
+        result.textContent = "You rolled: " + number;
+
+
+        if (number <= 2) {
+          document.body.style.backgroundColor = "red";
+        } else if (number <= 4) {
+          document.body.style.backgroundColor = "yellow";
+        } else {
+          document.body.style.backgroundColor = "green";
+        }
+      }, 1000);
+    }
+  </script>
+</body>
+</html>

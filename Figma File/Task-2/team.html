@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Team - Cryptous</title>
+  <link rel="stylesheet" href="style.css">
+  <script>
+    function toggleMenu() {
+      document.querySelector('.nav-links').classList.toggle('active');
+    }
+  </script>
+</head>
+<body>
+  <!-- Header -->
+  <header class="navbar">
+    <div class="container">
+      <div class="logo"><img src="logo.png" alt="Cryptous Logo"><span>Cryptous</span></div>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="company.html">Company</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="pricing.html">Pricing</a></li>
+          <li><a href="team.html" class="active">Team</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="blog.html">Blog</a></li>
+        </ul>
+      </nav>
+      <a href="#" class="btn-outline">Trade Now</a>
+      <span class="menu-toggle" onclick="toggleMenu()">☰</span>
+    </div>
+  </header>
+
+  <!-- Team Section -->
+  <section class="hero">
+    <h1>Meet Our Team</h1>
+    <p>Passionate minds driving the future of cryptocurrency</p>
+  </section>
+
+  <section class="features">
+    <div class="features-container">
+      <div class="feature">
+        <img src="team1.png" alt="CEO">
+        <h3>John Carter</h3>
+        <p>CEO & Founder</p>
+      </div>
+      <div class="feature">
+        <img src="team2.png" alt="CTO">
+        <h3>Sarah Lee</h3>
+        <p>Chief Technology Officer</p>
+      </div>
+      <div class="feature">
+        <img src="team3.png" alt="CMO">
+        <h3>Michael Smith</h3>
+        <p>Chief Marketing Officer</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div><h4>Company</h4><p><a href="about.html">About us</a></p><p>Privacy Policy</p></div>
+      <div><h4>Resources</h4><p><a href="pricing.html">Prices</a></p><p><a href="blog.html">Blog</a></p></div>
+    </div>
+  </footer>
+</body>
+</html>

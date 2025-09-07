@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OTP Generator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      width: 300px;
+      text-align: center;
+    }
+    button {
+      padding: 8px 15px;
+      border: none;
+      background: #4CAF50;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    button:hover {
+      background: #45a049;
+    }
+    .otp-display {
+      font-size: 24px;
+      font-weight: bold;
+      margin: 20px 0;
+      padding: 10px;
+      background: #f0f0f0;
+      border-radius: 5px;
+      letter-spacing: 5px;
+    }
+    .options {
+      margin: 15px 0;
+      text-align: left;
+    }
+    label {
+      display: block;
+      margin: 5px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>OTP Generator</h2>
+    
+    <div class="options">
+      <label>
+        <input type="radio" name="otpType" value="numeric" checked> Numeric OTP
+      </label>
+      <label>
+        <input type="radio" name="otpType" value="alphanumeric"> Alphanumeric OTP
+      </label>
+      <label>
+        Length: 
+        <select id="otpLength">
+          <option value="4">4 digits</option>
+          <option value="6" selected>6 digits</option>
+          <option value="8">8 digits</option>
+        </select>
+      </label>
+    </div>
+    
+    <div class="otp-display" id="otpDisplay">------</div>
+    
+    <button onclick="generateOTP()">Generate OTP</button>
+  </div>
+
+  <script>
+    function generateOTP() {
+      const otpType = document.querySelector('input[name="otpType"]:checked').value;
+      const otpLength = parseInt(document.getElementById('otpLength').value);
+      let otp = "";
+      
+      if (otpType === "numeric") {
+        // Generate numeric OTP
+        for (let i = 0; i < otpLength; i++) {
+          otp += Math.floor(Math.random() * 10);
+        }
+      } else {
+        // Generate alphanumeric OTP
+        const chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+        for (let i = 0; i < otpLength; i++) {
+          otp += chars.charAt(Math.floor(Math.random() * chars.length));
+        }
+      }
+      
+      document.getElementById("otpDisplay").textContent = otp;
+    }
+    
+    // Generate an OTP when the page loads
+    window.onload = generateOTP;
+  </script>
+</body>
+</html>

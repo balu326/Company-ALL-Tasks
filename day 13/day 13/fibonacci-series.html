@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fibonacci Series Generator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      width: 350px;
+      text-align: center;
+    }
+    input {
+      width: 90%;
+      padding: 8px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      padding: 8px 15px;
+      border: none;
+      background: #4CAF50;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    button:hover {
+      background: #45a049;
+    }
+    .result {
+      margin-top: 20px;
+      padding: 10px;
+      border-radius: 5px;
+      background-color: #f0f0f0;
+      text-align: left;
+      max-height: 200px;
+      overflow-y: auto;
+      display: none;
+    }
+    .fibonacci-number {
+      display: inline-block;
+      margin: 3px;
+      padding: 5px 10px;
+      background: #e0e0e0;
+      border-radius: 3px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Fibonacci Series Generator</h2>
+    <div>
+      <input type="number" id="count" placeholder="Enter number of terms" min="1" max="100" value="10">
+      <button onclick="generateFibonacci()">Generate Series</button>
+    </div>
+    <div id="result" class="result"></div>
+  </div>
+
+  <script>
+    function generateFibonacci() {
+      // Get the number of terms to generate
+      const count = parseInt(document.getElementById('count').value);
+      
+      // Validate input
+      if (isNaN(count) || count < 1 || count > 100) {
+        alert("Please enter a valid number between 1 and 100");
+        return;
+      }
+      
+      // Generate Fibonacci series
+      const fibSeries = [];
+      
+      // First two terms are 0 and 1
+      if (count >= 1) fibSeries.push(0);
+      if (count >= 2) fibSeries.push(1);
+      
+      // Generate remaining terms
+      for (let i = 2; i < count; i++) {
+        // Each term is the sum of the previous two terms
+        fibSeries.push(fibSeries[i-1] + fibSeries[i-2]);
+      }
+      
+      // Display the series
+      const resultDiv = document.getElementById('result');
+      resultDiv.innerHTML = "<h3>Fibonacci Series:</h3>";
+      
+      // Create elements for each number in the series
+      fibSeries.forEach((num, index) => {
+        const numSpan = document.createElement('span');
+        numSpan.className = 'fibonacci-number';
+        numSpan.textContent = num;
+        resultDiv.appendChild(numSpan);
+      });
+      
+      // Show the result
+      resultDiv.style.display = 'block';
+    }
+    
+    // Generate series on page load
+    window.onload = generateFibonacci;
+  </script>
+</body>
+</html>

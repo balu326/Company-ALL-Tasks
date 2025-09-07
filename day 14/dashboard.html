@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Portal - Dashboard</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar">
+            <div class="logo">
+                <h2>Student Portal</h2>
+            </div>
+            <ul class="nav-links">
+                <li class="active">
+                    <a href="#">
+                        <i class="fas fa-home"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fas fa-book"></i>
+                        <span>Courses</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>Schedule</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Grades</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fas fa-clipboard-list"></i>
+                        <span>Assignments</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fas fa-bell"></i>
+                        <span>Notifications</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fas fa-cog"></i>
+                        <span>Settings</span>
+                    </a>
+                </li>
+                <li class="logout">
+                    <a href="#" id="logout-button">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Logout</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Top Header -->
+            <header class="top-header">
+                <div class="toggle-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <div class="search-bar">
+                    <input type="text" placeholder="Search...">
+                    <i class="fas fa-search"></i>
+                </div>
+                <div class="user-info">
+                <div class="notifications">
+                    <i class="fas fa-bell"></i>
+                    <span class="badge">3</span>
+                </div>
+                <div class="user">
+                    <img src="https://via.placeholder.com/40" alt="User Avatar">
+                    <div class="user-details">
+                        <span id="user-name">Student Name</span>
+                        <span id="student-id" class="student-id">ID: </span>
+                        <span id="login-time" class="login-time">Last login: </span>
+                    </div>
+                </div>
+            </div>
+            </header>
+
+            <!-- Dashboard Content -->
+            <div class="dashboard-content">
+                <h1>Welcome, <span id="welcome-name">Student</span>!</h1>
+                <p class="date">Today is <span id="current-date"></span></p>
+
+                <!-- Quick Stats -->
+                <div class="stats-container">
+                    <div class="stat-card">
+                        <div class="stat-icon courses">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>5</h3>
+                            <p>Active Courses</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon assignments">
+                            <i class="fas fa-tasks"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>7</h3>
+                            <p>Pending Assignments</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon attendance">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>92%</h3>
+                            <p>Attendance Rate</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon gpa">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>3.8</h3>
+                            <p>Current GPA</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Upcoming Classes -->
+                <div class="content-section">
+                    <div class="section-header">
+                        <h2>Upcoming Classes</h2>
+                        <a href="#" class="view-all">View All</a>
+                    </div>
+                    <div class="classes-container">
+                        <div class="class-card">
+                            <div class="class-time">09:00 AM - 10:30 AM</div>
+                            <div class="class-info">
+                                <h3>Introduction to Computer Science</h3>
+                                <p>Prof. Johnson • Room 302</p>
+                            </div>
+                            <div class="class-status ongoing">
+                                <span>In 15 min</span>
+                            </div>
+                        </div>
+                        <div class="class-card">
+                            <div class="class-time">11:00 AM - 12:30 PM</div>
+                            <div class="class-info">
+                                <h3>Calculus II</h3>
+                                <p>Prof. Martinez • Room 201</p>
+                            </div>
+                            <div class="class-status">
+                                <span>Today</span>
+                            </div>
+                        </div>
+                        <div class="class-card">
+                            <div class="class-time">02:00 PM - 03:30 PM</div>
+                            <div class="class-info">
+                                <h3>Physics Lab</h3>
+                                <p>Prof. Williams • Lab 105</p>
+                            </div>
+                            <div class="class-status">
+                                <span>Today</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Assignments Due -->
+                <div class="content-section">
+                    <div class="section-header">
+                        <h2>Assignments Due</h2>
+                        <a href="#" class="view-all">View All</a>
+                    </div>
+                    <div class="assignments-container">
+                        <div class="assignment-card urgent">
+                            <div class="assignment-info">
+                                <h3>Research Paper</h3>
+                                <p>English Literature</p>
+                            </div>
+                            <div class="assignment-due">
+                                <p>Due Today</p>
+                                <span>11:59 PM</span>
+                            </div>
+                        </div>
+                        <div class="assignment-card">
+                            <div class="assignment-info">
+                                <h3>Problem Set 3</h3>
+                                <p>Calculus II</p>
+                            </div>
+                            <div class="assignment-due">
+                                <p>Due Tomorrow</p>
+                                <span>5:00 PM</span>
+                            </div>
+                        </div>
+                        <div class="assignment-card">
+                            <div class="assignment-info">
+                                <h3>Lab Report</h3>
+                                <p>Physics Lab</p>
+                            </div>
+                            <div class="assignment-due">
+                                <p>Due in 3 days</p>
+                                <span>11:59 PM</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Announcements -->
+                <div class="content-section">
+                    <div class="section-header">
+                        <h2>Announcements</h2>
+                        <a href="#" class="view-all">View All</a>
+                    </div>
+                    <div class="announcements-container">
+                        <div class="announcement-card">
+                            <div class="announcement-header">
+                                <div class="announcement-icon">
+                                    <i class="fas fa-bullhorn"></i>
+                                </div>
+                                <div class="announcement-meta">
+                                    <h3>Campus Event</h3>
+                                    <span>2 hours ago</span>
+                                </div>
+                            </div>
+                            <p>Annual Tech Fest registration is now open. Register before May 15th to participate in exciting competitions and workshops.</p>
+                        </div>
+                        <div class="announcement-card">
+                            <div class="announcement-header">
+                                <div class="announcement-icon">
+                                    <i class="fas fa-calendar-alt"></i>
+                                </div>
+                                <div class="announcement-meta">
+                                    <h3>Schedule Change</h3>
+                                    <span>Yesterday</span>
+                                </div>
+                            </div>
+                            <p>The Computer Science lecture scheduled for Friday has been moved to Room 305 due to maintenance in the regular classroom.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Fly Sign-Up</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #4a90e2, #8e44ad); /* blue → purple */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: #fff;
+    }
+
+    .container {
+      display: flex;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      overflow: hidden;
+      max-width: 900px;
+      width: 100%;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .left {
+      flex: 1;
+      padding: 50px;
+    }
+
+    .left h1 {
+      font-size: 2.5em;
+      margin-bottom: 20px;
+    }
+
+    .left p {
+      margin-bottom: 20px;
+    }
+
+    .left a {
+      color: #ffecb3;
+      text-decoration: none;
+    }
+
+    .btn-green {
+      background: #2ecc71;
+      border: none;
+      padding: 12px 25px;
+      font-size: 1em;
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .btn-green:hover {
+      background: #27ae60;
+    }
+
+    .right {
+      flex: 1;
+      background: #fff;
+      padding: 40px;
+      color: #333;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 350px;
+    }
+
+    .card h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #4a90e2;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    .btn-blue {
+      background: #3498db;
+      border: none;
+      width: 100%;
+      padding: 12px;
+      font-size: 1em;
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .btn-blue:hover {
+      background: #2980b9;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <div class="left">
+      <h1>Fly makes you faster.</h1>
+      <p>
+        Learn more at
+        <a href="https://uicookies.com" target="_blank">uicookies.com</a>
+      </p>
+      <button class="btn-green">See Pricing</button>
+    </div>
+
+
+    <div class="right">
+      <div class="card">
+        <h2>Sign Up for Free</h2>
+        <form>
+          <div class="form-group">
+            <label for="fullname">Full Name</label>
+            <input type="text" id="fullname" name="fullname" required>
+          </div>
+          <div class="form-group">
+            <label for="email1">Email</label>
+            <input type="email" id="email1" name="email1" required>
+          </div>
+          <div class="form-group">
+            <label for="email2">Confirm Email</label>
+            <input type="email" id="email2" name="email2" required>
+          </div>
+          <div class="form-group">
+            <label for="type">Type</label>
+            <select id="type" name="type">
+              <option value="student">Student</option>
+              <option value="professional">Professional</option>
+              <option value="business">Business</option>
+            </select>
+          </div>
+          <button type="submit" class="btn-blue">Register</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

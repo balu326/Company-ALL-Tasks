@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tasks Practice</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f9;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    /* Counter Section */
+    #counterValue {
+      font-size: 2rem;
+      margin: 10px 0;
+      color: #222;
+    }
+
+    button {
+      padding: 8px 14px;
+      margin: 5px;
+      border: none;
+      border-radius: 6px;
+      background: #007bff;
+      color: white;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: #0056b3;
+    }
+
+    hr {
+      margin: 25px 0;
+      width: 100%;
+      max-width: 500px;
+      border: 0;
+      border-top: 2px solid #ddd;
+    }
+
+    /* To-Do List Section */
+    #taskInput {
+      padding: 8px;
+      width: 250px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    #taskList {
+      list-style: none;
+      padding: 0;
+      margin-top: 15px;
+      max-width: 400px;
+      width: 100%;
+    }
+
+    #taskList li {
+      background: #fff;
+      margin-bottom: 8px;
+      padding: 10px;
+      border-radius: 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    /* Done task styling */
+    #taskList li.done span {
+      text-decoration: line-through;
+      color: gray;
+    }
+
+    #taskList li button {
+      margin-left: 5px;
+      font-size: 12px;
+      padding: 5px 10px;
+    }
+
+    /* Button color variations */
+    .deleteBtn {
+      background: #dc3545;
+    }
+    .deleteBtn:hover {
+      background: #a71d2a;
+    }
+
+    .doneBtn {
+      background: #28a745;
+    }
+    .doneBtn:hover {
+      background: #1e7e34;
+    }
+
+    .editBtn {
+      background: #ffc107;
+      color: black;
+    }
+    .editBtn:hover {
+      background: #d39e00;
+    }
+  </style>
+</head>
+<body>
+  <!-- =========================
+       Task 1: Live Counter
+  ========================== -->
+  <h1>Task 1: Live Counter</h1>
+  <p id="counterValue">0</p>
+  <button id="incrementBtn">Increment</button>
+  <button id="decrementBtn">Decrement</button>
+
+  <hr>
+
+  <!-- =========================
+       Task 2: To-Do List
+  ========================== -->
+  <h1>To-Do List</h1>
+  <input type="text" id="taskInput" placeholder="Enter a task">
+  <button id="addTaskBtn">Add Task</button>
+  <ul id="taskList"></ul>
+
+  <script>
+    // =========================
+    // Task 1: Live Counter
+    // =========================
+    let count = 0;
+    const counterDisplay = document.getElementById("counterValue");
+    const incrementBtn = document.getElementById("incrementBtn");
+    const decrementBtn = document.getElementById("decrementBtn");
+
+    // Increase count when "Increment" is clicked
+    incrementBtn.addEventListener("click", () => {
+      count++;
+      counterDisplay.textContent = count;
+    });
+
+    // Decrease count when "Decrement" is clicked
+    decrementBtn.addEventListener("click", () => {
+      count--;
+      counterDisplay.textContent = count;
+    });
+
+    // =========================
+    // Task 2: To-Do List
+    // =========================
+    const taskInput = document.getElementById("taskInput");
+    const addTaskBtn = document.getElementById("addTaskBtn");
+    const taskList = document.getElementById("taskList");
+
+    // Add a new task
+    addTaskBtn.addEventListener("click", () => {
+      const taskText = taskInput.value.trim();
+
+      if (taskText === "") {
+        alert("Please enter a task!");
+        return;
+      }
+
+      // Create list item
+      const li = document.createElement("li");
+      const span = document.createElement("span");
+      span.textContent = taskText;
+
+      // Done button
+      const doneBtn = document.createElement("button");
+      doneBtn.textContent = "Done";
+      doneBtn.className = "doneBtn";
+      doneBtn.addEventListener("click", () => {
+        li.classList.toggle("done");
+      });
+
+      // Edit button
+      const editBtn = document.createElement("button");
+      editBtn.textContent = "Edit";
+      editBtn.className = "editBtn";
+      editBtn.addEventListener("click", () => {
+        const newText = prompt("Edit your task:", span.textContent);
+        if (newText !== null && newText.trim() !== "") {
+          span.textContent = newText.trim();
+        }
+      });
+
+      // Delete button
+      const deleteBtn = document.createElement("button");
+      deleteBtn.textContent = "Delete";
+      deleteBtn.className = "deleteBtn";
+      deleteBtn.addEventListener("click", () => {
+        li.remove();
+      });
+
+      // Put everything together
+      li.appendChild(span);
+      li.appendChild(doneBtn);
+      li.appendChild(editBtn);
+      li.appendChild(deleteBtn);
+
+      // Add task to list
+      taskList.appendChild(li);
+
+      // Clear input box
+      taskInput.value = "";
+    });
+  </script>
+</body>
+</html>

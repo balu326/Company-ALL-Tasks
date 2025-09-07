@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student CRUD</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        input {
+            margin: 5px;
+            padding: 8px;
+        }
+        button {
+            padding: 8px 16px;
+            margin: 5px;
+            cursor: pointer;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Student Management</h1>
+    <form id="studentForm">
+        <input type="text" id="name" placeholder="Name" required>
+        <input type="number" id="age" placeholder="Age" required>
+        <button type="submit">Add Student</button>
+        <button type="button" id="saveBtn" style="display:none;">Save</button>
+        <button type="button" id="cancelBtn" style="display:none;">Cancel</button>
+    </form>
+    <table id="studentTable">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    <script>
+        let students = [];
+        let editingIndex = -1;
+
+        const form = document.getElementById('studentForm');
+        const nameInput = document.getElementById('name');
+        const ageInput = document.getElementById('age');
+        const saveBtn = document.getElementById('saveBtn');
+        const cancelBtn = document.getElementById('cancelBtn');
+        const tableBody = document.querySelector('#studentTable tbody');
+
+        function renderTable() {
+            tableBody.innerHTML = '';
+            students.forEach((student, index) => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${student.name}</td>
+                    <td>${student.age}</td>
+                    <td>
+                        <button onclick="editStudent(${index})">Edit</button>
+                        <button onclick="deleteStudent(${index})">Delete</button>
+                    </td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+
+        function addStudent(name, age) {
+            students.push({ name, age });
+            renderTable();
+        }
+
+        function editStudent(index) {
+            const student = students[index];
+            nameInput.value = student.name;
+            ageInput.value = student.age;
+            editingIndex = index;
+            form.querySelector('button[type="submit"]').style.display = 'none';
+            saveBtn.style.display = 'inline';
+            cancelBtn.style.display = 'inline';
+        }
+
+        function saveStudent() {
+            if (editingIndex !== -1) {
+                students[editingIndex] = { name: nameInput.value, age: parseInt(ageInput.value) };
+                editingIndex = -1;
+                form.reset();
+                form.querySelector('button[type="submit"]').style.display = 'inline';
+                saveBtn.style.display = 'none';
+                cancelBtn.style.display = 'none';
+                renderTable();
+            }
+        }
+
+        function cancelEdit() {
+            editingIndex = -1;
+            form.reset();
+            form.querySelector('button[type="submit"]').style.display = 'inline';
+            saveBtn.style.display = 'none';
+            cancelBtn.style.display = 'none';
+        }
+
+        function deleteStudent(index) {
+            students.splice(index, 1);
+            renderTable();
+        }
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            if (editingIndex === -1) {
+                addStudent(nameInput.value, parseInt(ageInput.value));
+                form.reset();
+            }
+        });
+
+        saveBtn.addEventListener('click', saveStudent);
+        cancelBtn.addEventListener('click', cancelEdit);
+    </script>
+</body>
+</html>

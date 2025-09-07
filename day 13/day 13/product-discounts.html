@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Discounts</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      width: 350px;
+      text-align: center;
+    }
+    select, input {
+      width: 90%;
+      padding: 8px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      padding: 8px 15px;
+      border: none;
+      background: #4CAF50;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    button:hover {
+      background: #45a049;
+    }
+    .result {
+      margin-top: 20px;
+      padding: 15px;
+      border-radius: 5px;
+      background-color: #f0f0f0;
+      display: none;
+    }
+    .product-info {
+      text-align: left;
+      margin-bottom: 10px;
+    }
+    .price-details {
+      display: flex;
+      justify-content: space-between;
+      margin: 5px 0;
+    }
+    .final-price {
+      font-size: 1.2em;
+      font-weight: bold;
+      color: #4CAF50;
+      margin-top: 10px;
+      border-top: 1px solid #ccc;
+      padding-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Product Discounts</h2>
+    <div>
+      <select id="product">
+        <option value="">Select a product</option>
+        <option value="laptop">Laptop - ₹50,000</option>
+        <option value="mouse">Mouse - ₹1,500</option>
+        <option value="keyboard">Keyboard - ₹2,500</option>
+        <option value="monitor">Monitor - ₹15,000</option>
+        <option value="headphones">Headphones - ₹3,000</option>
+      </select>
+      
+      <input type="number" id="discount" placeholder="Discount percentage (%)" min="0" max="100">
+      
+      <button onclick="calculateDiscount()">Calculate Final Price</button>
+    </div>
+    
+    <div id="result" class="result">
+      <div class="product-info" id="productInfo"></div>
+      <div class="price-details">
+        <span>Original Price:</span>
+        <span id="originalPrice"></span>
+      </div>
+      <div class="price-details">
+        <span>Discount:</span>
+        <span id="discountAmount"></span>
+      </div>
+      <div class="final-price">
+        <span>Final Price:</span>
+        <span id="finalPrice"></span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Product details stored in an object
+    const products = {
+      laptop: {
+        name: "Laptop",
+        price: 50000,
+        description: "High-performance laptop with SSD"
+      },
+      mouse: {
+        name: "Mouse",
+        price: 1500,
+        description: "Wireless ergonomic mouse"
+      },
+      keyboard: {
+        name: "Keyboard",
+        price: 2500,
+        description: "Mechanical RGB keyboard"
+      },
+      monitor: {
+        name: "Monitor",
+        price: 15000,
+        description: "27-inch 4K monitor"
+      },
+      headphones: {
+        name: "Headphones",
+        price: 3000,
+        description: "Noise-cancelling headphones"
+      }
+    };
+    
+    function calculateDiscount() {
+      // Get selected product and discount percentage
+      const productId = document.getElementById('product').value;
+      const discountPercentage = parseFloat(document.getElementById('discount').value);
+      
+      // Validate inputs
+      if (!productId || isNaN(discountPercentage) || discountPercentage < 0 || discountPercentage > 100) {
+        alert("Please select a product and enter a valid discount percentage (0-100)");
+        return;
+      }
+      
+      // Get product details
+      const product = products[productId];
+      
+      // Calculate discount and final price
+      const originalPrice = product.price;
+      const discountAmount = (originalPrice * discountPercentage) / 100;
+      
+      // Use Math.round to round the final price to the nearest integer
+      const finalPrice = Math.round(originalPrice - discountAmount);
+      
+      // Display results
+      document.getElementById('productInfo').innerHTML = `<strong>${product.name}</strong><br>${product.description}`;
+      document.getElementById('originalPrice').textContent = `₹${originalPrice.toLocaleString()}`;
+      document.getElementById('discountAmount').textContent = `₹${discountAmount.toLocaleString()} (${discountPercentage}%)`;
+      document.getElementById('finalPrice').textContent = `₹${finalPrice.toLocaleString()}`;
+      
+      // Show the result div
+      document.getElementById('result').style.display = 'block';
+    }
+  </script>
+</body>
+</html>

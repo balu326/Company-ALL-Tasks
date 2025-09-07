@@ -1,0 +1,4 @@
+<section class="page-hero">
+  <h1>About Us</h1>
+  <p>Our mission is to make cryptocurrency trading safe and simple for everyone.</p>
+</section>

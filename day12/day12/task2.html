@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Day & Night Theme Switcher</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      transition: background-color 0.5s, color 0.5s;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 12px 25px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+    }
+
+    #message {
+      font-size: 22px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body id="theme">
+  <h1>Day & Night Theme Switcher</h1>
+  <p id="message">Currently in Day Mode ☀️</p>
+  <button onclick="toggleTheme()">Switch to Night Mode</button>
+
+  <script>
+    let isDay = true;
+
+    function toggleTheme() {
+      let body = document.getElementById("theme");
+      let message = document.getElementById("message");
+      let button = document.querySelector("button");
+
+      if (isDay) {
+        //night
+        body.style.backgroundColor = "black";
+        body.style.color = "white";
+        message.textContent = "Currently in Night Mode 🌙";
+        button.textContent = "Switch to Day Mode";
+        button.style.backgroundColor = "white";
+        button.style.color = "black";
+      } else {
+       //day
+        body.style.backgroundColor = "white";
+        body.style.color = "black";
+        message.textContent = "Currently in Day Mode ☀️";
+        button.textContent = "Switch to Night Mode";
+        button.style.backgroundColor = "black";
+        button.style.color = "white";
+      }
+
+      isDay = !isDay;
+    }
+  </script>
+</body>
+</html>

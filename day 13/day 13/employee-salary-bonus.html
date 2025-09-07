@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Employee Salary with Bonus</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      width: 350px;
+      text-align: center;
+    }
+    input, select {
+      width: 90%;
+      padding: 8px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      padding: 8px 15px;
+      border: none;
+      background: #4CAF50;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    button:hover {
+      background: #45a049;
+    }
+    .result {
+      margin-top: 20px;
+      padding: 15px;
+      border-radius: 5px;
+      background-color: #f0f0f0;
+      display: none;
+      text-align: left;
+    }
+    .employee-info {
+      margin-bottom: 15px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #ccc;
+    }
+    .salary-details {
+      display: flex;
+      justify-content: space-between;
+      margin: 5px 0;
+    }
+    .annual-salary {
+      font-size: 1.2em;
+      font-weight: bold;
+      color: #4CAF50;
+      margin-top: 10px;
+      border-top: 1px solid #ccc;
+      padding-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Employee Salary Calculator</h2>
+    <div>
+      <input type="text" id="name" placeholder="Employee Name">
+      <input type="text" id="position" placeholder="Position">
+      <input type="number" id="monthlySalary" placeholder="Monthly Salary" min="0">
+      <select id="performanceRating">
+        <option value="">Select Performance Rating</option>
+        <option value="excellent">Excellent (20% bonus)</option>
+        <option value="good">Good (10% bonus)</option>
+        <option value="average">Average (5% bonus)</option>
+        <option value="poor">Poor (0% bonus)</option>
+      </select>
+      
+      <button onclick="calculateSalary()">Calculate Annual Salary</button>
+    </div>
+    
+    <div id="result" class="result">
+      <div class="employee-info" id="employeeInfo"></div>
+      <div class="salary-details">
+        <span>Monthly Salary:</span>
+        <span id="monthlySalaryDisplay"></span>
+      </div>
+      <div class="salary-details">
+        <span>Performance Rating:</span>
+        <span id="performanceRatingDisplay"></span>
+      </div>
+      <div class="salary-details">
+        <span>Bonus Percentage:</span>
+        <span id="bonusPercentageDisplay"></span>
+      </div>
+      <div class="salary-details">
+        <span>Annual Bonus:</span>
+        <span id="annualBonusDisplay"></span>
+      </div>
+      <div class="annual-salary">
+        <span>Total Annual Salary:</span>
+        <span id="annualSalaryDisplay"></span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Employee object constructor
+    function Employee(name, position, monthlySalary, performanceRating) {
+      this.name = name;
+      this.position = position;
+      this.monthlySalary = monthlySalary;
+      this.performanceRating = performanceRating;
+      
+      // Method to calculate annual salary with bonus
+      this.calculateAnnualSalary = function() {
+        // Base annual salary (monthly salary × 12)
+        const baseSalary = this.monthlySalary * 12;
+        
+        // Determine bonus percentage based on performance rating
+        let bonusPercentage = 0;
+        switch(this.performanceRating) {
+          case 'excellent':
+            bonusPercentage = 0.20; // 20%
+            break;
+          case 'good':
+            bonusPercentage = 0.10; // 10%
+            break;
+          case 'average':
+            bonusPercentage = 0.05; // 5%
+            break;
+          case 'poor':
+          default:
+            bonusPercentage = 0; // 0%
+            break;
+        }
+        
+        // Calculate annual bonus
+        const annualBonus = baseSalary * bonusPercentage;
+        
+        // Calculate total annual salary (base + bonus)
+        const totalAnnualSalary = baseSalary + annualBonus;
+        
+        return {
+          baseSalary: baseSalary,
+          bonusPercentage: bonusPercentage,
+          annualBonus: annualBonus,
+          totalAnnualSalary: totalAnnualSalary
+        };
+      };
+    }
+    
+    function calculateSalary() {
+      // Get input values
+      const name = document.getElementById('name').value;
+      const position = document.getElementById('position').value;
+      const monthlySalary = parseFloat(document.getElementById('monthlySalary').value);
+      const performanceRating = document.getElementById('performanceRating').value;
+      
+      // Validate inputs
+      if (!name || !position || isNaN(monthlySalary) || monthlySalary <= 0 || !performanceRating) {
+        alert("Please fill in all fields with valid values");
+        return;
+      }
+      
+      // Create employee object
+      const employee = new Employee(name, position, monthlySalary, performanceRating);
+      
+      // Calculate salary details
+      const salaryDetails = employee.calculateAnnualSalary();
+      
+      // Display employee information
+      document.getElementById('employeeInfo').innerHTML = `
+        <strong>${employee.name}</strong><br>
+        ${employee.position}
+      `;
+      
+      // Display salary details
+      document.getElementById('monthlySalaryDisplay').textContent = `₹${monthlySalary.toLocaleString()}`;
+      
+      // Format performance rating for display
+      let performanceDisplay = performanceRating.charAt(0).toUpperCase() + performanceRating.slice(1);
+      document.getElementById('performanceRatingDisplay').textContent = performanceDisplay;
+      
+      // Display bonus percentage
+      document.getElementById('bonusPercentageDisplay').textContent = `${(salaryDetails.bonusPercentage * 100)}%`;
+      
+      // Display annual bonus
+      document.getElementById('annualBonusDisplay').textContent = `₹${salaryDetails.annualBonus.toLocaleString()}`;
+      
+      // Display total annual salary
+      document.getElementById('annualSalaryDisplay').textContent = `₹${salaryDetails.totalAnnualSalary.toLocaleString()}`;
+      
+      // Show the result div
+      document.getElementById('result').style.display = 'block';
+    }
+  </script>
+</body>
+</html>

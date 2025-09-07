@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bank Loan EMI Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      width: 350px;
+      text-align: center;
+    }
+    .input-group {
+      margin-bottom: 15px;
+      text-align: left;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    input, select {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+    .slider-container {
+      display: flex;
+      align-items: center;
+      margin-top: 5px;
+    }
+    .slider {
+      flex-grow: 1;
+      margin-right: 10px;
+    }
+    .slider-value {
+      width: 60px;
+      text-align: right;
+    }
+    button {
+      padding: 10px 15px;
+      border: none;
+      background: #4CAF50;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+    button:hover {
+      background: #45a049;
+    }
+    .result {
+      margin-top: 20px;
+      padding: 15px;
+      border-radius: 5px;
+      background-color: #f0f0f0;
+      display: none;
+    }
+    .emi-amount {
+      font-size: 24px;
+      font-weight: bold;
+      color: #4CAF50;
+      margin: 10px 0;
+    }
+    .loan-details {
+      display: flex;
+      justify-content: space-between;
+      margin: 5px 0;
+      font-size: 14px;
+    }
+    .loan-summary {
+      margin-top: 15px;
+      padding-top: 15px;
+      border-top: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Bank Loan EMI Calculator</h2>
+    
+    <div class="input-group">
+      <label for="loanAmount">Loan Amount (₹)</label>
+      <input type="number" id="loanAmount" min="1000" step="1000" value="100000">
+      <div class="slider-container">
+        <input type="range" id="loanAmountSlider" class="slider" min="10000" max="10000000" step="10000" value="100000">
+        <span id="loanAmountValue" class="slider-value">1,00,000</span>
+      </div>
+    </div>
+    
+    <div class="input-group">
+      <label for="interestRate">Interest Rate (% per annum)</label>
+      <input type="number" id="interestRate" min="1" max="30" step="0.1" value="10">
+      <div class="slider-container">
+        <input type="range" id="interestRateSlider" class="slider" min="1" max="30" step="0.1" value="10">
+        <span id="interestRateValue" class="slider-value">10%</span>
+      </div>
+    </div>
+    
+    <div class="input-group">
+      <label for="loanTerm">Loan Term (months)</label>
+      <input type="number" id="loanTerm" min="1" max="360" value="12">
+      <div class="slider-container">
+        <input type="range" id="loanTermSlider" class="slider" min="1" max="360" step="1" value="12">
+        <span id="loanTermValue" class="slider-value">12</span>
+      </div>
+    </div>
+    
+    <button onclick="calculateEMI()">Calculate EMI</button>
+    
+    <div id="result" class="result">
+      <div class="emi-amount" id="emiAmount"></div>
+      
+      <div class="loan-details">
+        <span>Loan Amount:</span>
+        <span id="resultLoanAmount"></span>
+      </div>
+      
+      <div class="loan-details">
+        <span>Interest Rate:</span>
+        <span id="resultInterestRate"></span>
+      </div>
+      
+      <div class="loan-details">
+        <span>Loan Term:</span>
+        <span id="resultLoanTerm"></span>
+      </div>
+      
+      <div class="loan-summary">
+        <div class="loan-details">
+          <span>Total Amount:</span>
+          <span id="totalAmount"></span>
+        </div>
+        
+        <div class="loan-details">
+          <span>Total Interest:</span>
+          <span id="totalInterest"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Function to calculate EMI
+    function calculateEMI() {
+      // Get input values
+      const loanAmount = parseFloat(document.getElementById('loanAmount').value);
+      const interestRate = parseFloat(document.getElementById('interestRate').value);
+      const loanTerm = parseInt(document.getElementById('loanTerm').value);
+      
+      // Validate inputs
+      if (isNaN(loanAmount) || isNaN(interestRate) || isNaN(loanTerm) ||
+          loanAmount <= 0 || interestRate <= 0 || loanTerm <= 0) {
+        alert("Please enter valid values for all fields");
+        return;
+      }
+      
+      // Calculate monthly interest rate (annual rate / 12 / 100)
+      const monthlyInterestRate = interestRate / 12 / 100;
+      
+      // Calculate EMI using the formula: EMI = [P × R × (1+R)^N] / [(1+R)^N – 1]
+      // Where:
+      // P = loan amount
+      // R = monthly interest rate
+      // N = total months
+      
+      const emi = (loanAmount * monthlyInterestRate * Math.pow(1 + monthlyInterestRate, loanTerm)) / 
+                (Math.pow(1 + monthlyInterestRate, loanTerm) - 1);
+      
+      // Calculate total amount and interest
+      const totalAmount = emi * loanTerm;
+      const totalInterest = totalAmount - loanAmount;
+      
+      // Display results
+      document.getElementById('emiAmount').textContent = `₹${emi.toFixed(2)} per month`;
+      document.getElementById('resultLoanAmount').textContent = `₹${loanAmount.toLocaleString()}`;
+      document.getElementById('resultInterestRate').textContent = `${interestRate}% per annum`;
+      document.getElementById('resultLoanTerm').textContent = `${loanTerm} months`;
+      document.getElementById('totalAmount').textContent = `₹${totalAmount.toLocaleString(undefined, {maximumFractionDigits: 0})}`;
+      document.getElementById('totalInterest').textContent = `₹${totalInterest.toLocaleString(undefined, {maximumFractionDigits: 0})}`;
+      
+      // Show the result div
+      document.getElementById('result').style.display = 'block';
+    }
+    
+    // Sync sliders with input fields
+    function setupSliders() {
+      // Loan Amount slider
+      const loanAmountInput = document.getElementById('loanAmount');
+      const loanAmountSlider = document.getElementById('loanAmountSlider');
+      const loanAmountValue = document.getElementById('loanAmountValue');
+      
+      loanAmountSlider.addEventListener('input', function() {
+        loanAmountInput.value = this.value;
+        loanAmountValue.textContent = parseInt(this.value).toLocaleString();
+      });
+      
+      loanAmountInput.addEventListener('input', function() {
+        if (this.value > 10000000) this.value = 10000000;
+        if (this.value < 10000) this.value = 10000;
+        loanAmountSlider.value = this.value;
+        loanAmountValue.textContent = parseInt(this.value).toLocaleString();
+      });
+      
+      // Interest Rate slider
+      const interestRateInput = document.getElementById('interestRate');
+      const interestRateSlider = document.getElementById('interestRateSlider');
+      const interestRateValue = document.getElementById('interestRateValue');
+      
+      interestRateSlider.addEventListener('input', function() {
+        interestRateInput.value = this.value;
+        interestRateValue.textContent = `${this.value}%`;
+      });
+      
+      interestRateInput.addEventListener('input', function() {
+        if (this.value > 30) this.value = 30;
+        if (this.value < 1) this.value = 1;
+        interestRateSlider.value = this.value;
+        interestRateValue.textContent = `${this.value}%`;
+      });
+      
+      // Loan Term slider
+      const loanTermInput = document.getElementById('loanTerm');
+      const loanTermSlider = document.getElementById('loanTermSlider');
+      const loanTermValue = document.getElementById('loanTermValue');
+      
+      loanTermSlider.addEventListener('input', function() {
+        loanTermInput.value = this.value;
+        loanTermValue.textContent = this.value;
+      });
+      
+      loanTermInput.addEventListener('input', function() {
+        if (this.value > 360) this.value = 360;
+        if (this.value < 1) this.value = 1;
+        loanTermSlider.value = this.value;
+        loanTermValue.textContent = this.value;
+      });
+    }
+    
+    // Initialize sliders when the page loads
+    window.onload = setupSliders;
+  </script>
+</body>
+</html>

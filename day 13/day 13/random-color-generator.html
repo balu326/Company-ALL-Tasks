@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Random Color Generator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      transition: background-color 0.5s ease;
+    }
+    .header {
+      text-align: center;
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.8);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      z-index: 1;
+    }
+    .color-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 20px;
+      flex-grow: 1;
+    }
+    .color-box {
+      width: 150px;
+      height: 150px;
+      margin: 10px;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-weight: bold;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+    .color-box:hover {
+      transform: scale(1.05);
+    }
+    .color-code {
+      margin-top: 10px;
+      font-size: 14px;
+      background-color: rgba(0, 0, 0, 0.3);
+      padding: 5px 10px;
+      border-radius: 15px;
+    }
+    .controls {
+      text-align: center;
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.8);
+    }
+    button {
+      padding: 10px 20px;
+      border: none;
+      background: #4CAF50;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+      margin: 0 5px;
+      font-size: 16px;
+    }
+    button:hover {
+      background: #45a049;
+    }
+    .copied {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: rgba(0, 0, 0, 0.7);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      display: none;
+      z-index: 100;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Random Color Generator</h1>
+  </div>
+  
+  <div class="color-container" id="colorContainer"></div>
+  
+  <div class="controls">
+    <button onclick="generateColors()">Generate New Colors</button>
+    <button onclick="generateColors(1)">Add One Color</button>
+  </div>
+  
+  <div class="copied" id="copied">Color code copied to clipboard!</div>
+
+  <script>
+    // Function to generate a random hex color
+    function generateRandomColor() {
+      // Generate random values for Red, Green, Blue (0-255)
+      const r = Math.floor(Math.random() * 256);
+      const g = Math.floor(Math.random() * 256);
+      const b = Math.floor(Math.random() * 256);
+      
+      // Convert to hexadecimal and ensure 2 digits
+      const rHex = r.toString(16).padStart(2, '0');
+      const gHex = g.toString(16).padStart(2, '0');
+      const bHex = b.toString(16).padStart(2, '0');
+      
+      // Return the hex color code
+      return `#${rHex}${gHex}${bHex}`;
+    }
+    
+    // Function to determine if text should be black or white based on background color
+    function getContrastColor(hexColor) {
+      // Remove the # if present
+      hexColor = hexColor.replace('#', '');
+      
+      // Convert hex to RGB
+      const r = parseInt(hexColor.substr(0, 2), 16);
+      const g = parseInt(hexColor.substr(2, 2), 16);
+      const b = parseInt(hexColor.substr(4, 2), 16);
+      
+      // Calculate luminance - a measure of brightness
+      const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+      
+      // Return black for bright colors, white for dark colors
+      return luminance > 0.5 ? '#000000' : '#FFFFFF';
+    }
+    
+    // Function to copy color code to clipboard
+    function copyToClipboard(text) {
+      navigator.clipboard.writeText(text).then(() => {
+        const copied = document.getElementById('copied');
+        copied.style.display = 'block';
+        setTimeout(() => {
+          copied.style.display = 'none';
+        }, 2000);
+      });
+    }
+    
+    // Function to generate and display colors
+    function generateColors(count = 5) {
+      const container = document.getElementById('colorContainer');
+      
+      // If not adding to existing colors, clear the container
+      if (count === 5) {
+        container.innerHTML = '';
+      }
+      
+      // Generate the specified number of color boxes
+      for (let i = 0; i < count; i++) {
+        const colorCode = generateRandomColor();
+        const contrastColor = getContrastColor(colorCode);
+        
+        const colorBox = document.createElement('div');
+        colorBox.className = 'color-box';
+        colorBox.style.backgroundColor = colorCode;
+        colorBox.style.color = contrastColor;
+        colorBox.innerHTML = `<div>Click to Copy</div><div class="color-code">${colorCode}</div>`;
+        
+        // Add click event to copy the color code
+        colorBox.addEventListener('click', () => {
+          copyToClipboard(colorCode);
+        });
+        
+        container.appendChild(colorBox);
+      }
+      
+      // Set the body background to a light gradient of the first color
+      if (count === 5 && container.children.length > 0) {
+        const firstColor = container.children[0].style.backgroundColor;
+        document.body.style.backgroundColor = firstColor;
+      }
+    }
+    
+    // Generate colors when the page loads
+    window.onload = generateColors;
+  </script>
+</body>
+</html>

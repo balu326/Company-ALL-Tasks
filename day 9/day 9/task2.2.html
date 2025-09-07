@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bank Transaction Validator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      width: 350px;
+      text-align: center;
+    }
+    input, select {
+      width: 90%;
+      padding: 8px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      padding: 8px 15px;
+      border: none;
+      background: green;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 5px;
+    }
+    button:hover {
+      background: darkgreen;
+    }
+    .result {
+      margin-top: 15px;
+      font-weight: bold;
+      color: #333;
+      display: none;
+    }
+    .warning {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Bank Transaction Validator</h2>
+    <select id="action" onchange="toggleAmountField()">
+      <option value="deposit">Deposit</option>
+      <option value="withdraw">Withdraw</option>
+      <option value="check">Check Balance</option>
+    </select>
+    <input type="number" id="amount" placeholder="Enter amount">
+    <button onclick="performAction()">Submit</button>
+    <div class="result" id="result"></div>
+  </div>
+
+  <script>
+    let balance = 500;
+    let balanceVisible = false;
+
+    function bank(balance, action, amount = 0) {
+      if (action === "deposit") {
+        balance += amount;
+      } else if (action === "withdraw") {
+        if (balance >= amount) {
+          balance -= amount;
+        } else {
+          return { balance, message: "❌ Insufficient Funds!" };
+        }
+      } else if (action === "check") {
+
+      }
+
+      let message = `Balance: ₹${balance}`;
+      if (balance < 100) {
+        message += " ⚠ Low Balance";
+      }
+
+      return { balance, message };
+    }
+
+    function performAction() {
+      let action = document.getElementById("action").value;
+      let amount = parseFloat(document.getElementById("amount").value) || 0;
+
+      if (action === "check") {
+        amount = 0;
+        balanceVisible = true;
+      }
+
+      let result = bank(balance, action, amount);
+      balance = result.balance;
+
+      let resultDiv = document.getElementById("result");
+
+      if (balanceVisible) {
+        resultDiv.style.display = "block";
+        resultDiv.textContent = result.message;
+      } else {
+        resultDiv.style.display = "block";
+        resultDiv.textContent = "✅ Transaction Successful (Check balance to view)";
+      }
+
+      if (result.message.includes("Low Balance") && balanceVisible) {
+        resultDiv.classList.add("warning");
+      } else {
+        resultDiv.classList.remove("warning");
+      }
+    }
+
+    function toggleAmountField() {
+      let action = document.getElementById("action").value;
+      let amountField = document.getElementById("amount");
+      if (action === "check") {
+        amountField.style.display = "none";
+      } else {
+        amountField.style.display = "block";
+      }
+    }
+
+    toggleAmountField();
+  </script>
+</body>
+</html>

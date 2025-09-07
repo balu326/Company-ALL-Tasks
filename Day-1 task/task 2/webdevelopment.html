@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Web Development</title>
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(to bottom right, #fdfbfb, #ebedee);
+        color: #333;
+    }
+
+    header {
+        background: linear-gradient(to right, #007BFF, #00C6FF);
+        color: white;
+        padding: 20px;
+        text-align: center;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+        margin: 0;
+        font-size: 2.5rem;
+    }
+
+    p {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        max-width: 900px;
+        margin: 15px auto;
+        text-align: center;
+    }
+
+    .image-container {
+        display: flex;
+        justify-content: center;
+        margin: 20px 0;
+    }
+
+    .image-container img {
+        max-width: 80%;
+        height: auto;
+        border-radius: 12px;
+        box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease;
+    }
+
+    .image-container img:hover {
+        transform: scale(1.05);
+    }
+
+    section {
+        max-width: 1100px;
+        margin: auto;
+        padding: 20px;
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+
+    ul {
+        text-align: left;
+        padding: 0 40px;
+        font-size: 1.05rem;
+    }
+
+    ul li {
+        margin: 10px 0;
+        padding-left: 20px;
+        position: relative;
+    }
+
+    ul li::before {
+        content: "✔";
+        position: absolute;
+        left: 0;
+        color: #007BFF;
+        font-weight: bold;
+    }
+
+    footer {
+        background: #007BFF;
+        color: white;
+        text-align: center;
+        padding: 15px;
+        margin-top: 30px;
+    }
+
+    a.button {
+        display: inline-block;
+        background: #007BFF;
+        color: white;
+        padding: 10px 20px;
+        margin: 20px auto;
+        border-radius: 5px;
+        text-decoration: none;
+        transition: background 0.3s;
+    }
+
+    a.button:hover {
+        background: #0056b3;
+    }
+</style>
+</head>
+<body>
+
+<header>
+    <h1>Web Development</h1>
+    <p>Building fast, responsive, and secure websites that deliver exceptional user experiences.</p>
+</header>
+
+<section>
+    <div class="image-container">
+        <img src="images/2.jpg" alt="Web Development Example">
+    </div>
+
+    <h2>Our Expertise</h2>
+    <p>We specialize in full-stack web development, offering both front-end and back-end solutions that are tailored to meet the unique needs of our clients. Whether it's a personal portfolio, an e-commerce platform, or a complex enterprise system, our goal is to deliver high-quality, maintainable, and scalable solutions.</p>
+
+    <h3>What We Offer:</h3>
+    <ul>
+        <li>Responsive and mobile-first design</li>
+        <li>High-performance websites</li>
+        <li>SEO-optimized coding</li>
+        <li>Secure and scalable architecture</li>
+        <li>Integration with APIs and databases</li>
+        <li>Custom web applications</li>
+    </ul>
+
+    <a href="cards.html" class="button">Contact Us for More</a>
+</section>
+
+<footer>
+     Pratice task
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us - Cryptous</title>
+  <link rel="stylesheet" href="style.css">
+  <script>
+    function toggleMenu() {
+      document.querySelector('.nav-links').classList.toggle('active');
+    }
+  </script>
+</head>
+<body>
+  <!-- Header -->
+  <header class="navbar">
+    <div class="container">
+      <div class="logo">
+        <img src="logo.png" alt="Cryptous Logo">
+        <span>Cryptous</span>
+      </div>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="company.html">Company</a></li>
+          <li><a href="about.html" class="active">About</a></li>
+          <li><a href="pricing.html">Pricing</a></li>
+          <li><a href="team.html">Team</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="blog.html">Blog</a></li>
+        </ul>
+      </nav>
+      <a href="#" class="btn-outline">Trade Now</a>
+      <span class="menu-toggle" onclick="toggleMenu()">☰</span>
+    </div>
+  </header>
+
+  <!-- About Section -->
+  <section class="hero about-hero">
+    <h1>About Cryptous</h1>
+    <p>Your trusted partner in cryptocurrency since 2011.</p>
+  </section>
+
+  <section class="features">
+    <h2>Our Mission</h2>
+    <p>We aim to simplify cryptocurrency trading while ensuring security and transparency.
+    With over 10 years of experience, Cryptous empowers millions of users worldwide to invest and trade with confidence.</p>
+  </section>
+
+  <section class="features">
+    <h2>Our Journey</h2>
+    <div class="features-container">
+      <div class="feature">
+        <h3>2011</h3>
+        <p>Founded as a small crypto exchange platform.</p>
+      </div>
+      <div class="feature">
+        <h3>2015</h3>
+        <p>Expanded globally with millions of users.</p>
+      </div>
+      <div class="feature">
+        <h3>2020+</h3>
+        <p>Industry leader with advanced blockchain solutions.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div><h4>Company</h4><p><a href="about.html">About us</a></p><p>Terms of use</p><p>Privacy Policy</p></div>
+      <div><h4>Resources</h4><p><a href="pricing.html">Prices</a></p><p><a href="blog.html">Blog</a></p></div>
+    </div>
+  </footer>
+</body>
+</html>

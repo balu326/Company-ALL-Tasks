@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grid Layout Example</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    h2 { margin-bottom: 10px; }
+
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-auto-rows: 80px;
+      gap: 10px;
+      border: 4px solid black;
+      padding: 10px;
+      width: 400px;
+    }
+
+    .box {
+      text-align: center;
+      font-weight: bold;
+      color: white;
+    }
+
+    .red { background: crimson; }
+    .yellow { background: gold; color: black; }
+    .purple { background: mediumslateblue; }
+    .green { background: limegreen; }
+    .blue { background: dodgerblue; }
+
+
+    .red.one   { grid-column: 1 / 2; grid-row: 1 / 2; }
+    .yellow    { grid-column: 2 / 4; grid-row: 1 / 2; }
+    .green     { grid-column: 1 / 2; grid-row: 2 / 4; }
+    .blue      { grid-column: 2 / 3; grid-row: 2 / 3; }
+    .red.two   { grid-column: 3 / 4; grid-row: 2 / 3; }
+    .purple    { grid-column: 2 / 4; grid-row: 3 / 4; }
+  </style>
+</head>
+<body>
+
+  <h2>Grid Layout Example:</h2>
+  <div class="grid-container">
+    <div class="box red one">1</div>
+    <div class="box yellow">2</div>
+    <div class="box green">3</div>
+    <div class="box blue">4</div>
+    <div class="box red two">5</div>
+    <div class="box purple">6</div>
+  </div>
+
+</body>
+</html>

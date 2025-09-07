@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mood-Based Background Changer</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      transition: background-color 0.5s ease;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    .buttons {
+      margin-bottom: 30px;
+    }
+
+    button {
+      margin: 5px;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    button:hover {
+      transform: scale(1.1);
+    }
+
+    #message {
+      font-size: 20px;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Mood-Based Background Changer</h1>
+
+  <div class="buttons">
+    <button onclick="setMood('happy')">Happy</button>
+    <button onclick="setMood('sad')">Sad</button>
+    <button onclick="setMood('angry')">Angry</button>
+    <button onclick="setMood('relaxed')">Relaxed</button>
+  </div>
+
+  <p id="message">Click a mood to change the background!</p>
+
+  <script>
+    function setMood(mood) {
+      let message = document.getElementById("message");
+
+      if (mood === "happy") {
+        document.body.style.backgroundColor = "#FFD700";
+        message.textContent = "You are feeling Happy! 😊";
+      }
+      else if (mood === "sad") {
+        document.body.style.backgroundColor = "#1E90FF";
+        message.textContent = "You are feeling Sad. 😢";
+      }
+      else if (mood === "angry") {
+        document.body.style.backgroundColor = "#FF4500";
+        message.textContent = "You are feeling Angry! 😡";
+      }
+      else if (mood === "relaxed") {
+        document.body.style.backgroundColor = "#90EE90";
+        message.textContent = "You are feeling Relaxed. 😌";
+      }
+    }
+  </script>
+</body>
+</html>

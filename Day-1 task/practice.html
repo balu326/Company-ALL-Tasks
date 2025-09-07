@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HTML & CSS Practice Sheet - G. Balaji Reddy</title>
+<style>
+/* ====== CSS Properties Reference ====== */
+
+.color { color: red; }
+.font { font-size: 16px; font-family: Arial, sans-serif; font-weight: bold; font-style: italic; text-align: center; text-decoration: underline; line-height: 1.5; letter-spacing: 2px; }
+
+
+.bg { background-color: #f0f0f0; background-image: url('https://via.placeholder.com/400x200'); background-size: cover; background-repeat: no-repeat; background-position: center; }
+
+
+.box { width: 200px; height: 100px; padding: 10px; margin: 10px; border: 2px solid #000; border-radius: 10px; box-shadow: 2px 2px 5px #888; }
+
+
+.pos { position: relative; top: 5px; left: 5px; z-index: 1; }
+
+
+.flex { display: flex; justify-content: center; align-items: center; gap: 10px; }
+.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+
+.transition { transition: all 0.3s ease; }
+.transform { transform: rotate(5deg); }
+.opacity { opacity: 0.8; }
+.cursor { cursor: pointer; }
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+  background: linear-gradient(to right, #e0f7fa, #fce4ec);
+}
+</style>
+</head>
+<body>
+
+<header style="background:#4a148c;color:white;padding:15px;text-align:center;border-radius:10px;">
+<h1>HTML & CSS Practice - G. Balaji Reddy</h1>
+<nav>
+<a href="#tags" style="color:white;">HTML Tags</a> |
+<a href="#css" style="color:white;">CSS Properties</a> |
+<a href="#example" style="color:white;">Example</a>
+</nav>
+</header>
+
+<section id="tags" style="margin-top:20px;background:white;padding:15px;border-radius:10px;">
+<h2>HTML Tags & Attributes</h2>
+<pre>
+&lt;html&gt;, &lt;head&gt;, &lt;title&gt;, &lt;meta charset="UTF-8"&gt;, &lt;body&gt;
+&lt;h1&gt; to &lt;h6&gt;, &lt;p&gt;, &lt;b&gt;, &lt;strong&gt;, &lt;i&gt;, &lt;em&gt;, &lt;u&gt;, &lt;small&gt;, &lt;mark&gt;, &lt;sup&gt;, &lt;sub&gt;, &lt;blockquote&gt;, &lt;q&gt;, &lt;hr&gt;, &lt;br&gt;
+&lt;ul&gt;, &lt;ol&gt;, &lt;li&gt;, &lt;dl&gt;, &lt;dt&gt;, &lt;dd&gt;
+&lt;a href="https://example.com" target="_blank" title="Example link"&gt;Example&lt;/a&gt;, &lt;img src="image.jpg" alt="Sample"&gt;, &lt;video src="video.mp4" controls&gt;, &lt;audio src="audio.mp3" controls&gt;, &lt;iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ"&gt;
+&lt;table&gt;, &lt;thead&gt;, &lt;tbody&gt;, &lt;tfoot&gt;, &lt;tr&gt;, &lt;th&gt;, &lt;td&gt;, &lt;caption&gt;
+&lt;form action="submit.php" method="post"&gt;, &lt;input type="text" name="name" placeholder="Enter Name"&gt;, &lt;textarea&gt;, &lt;select&gt;, &lt;option&gt;, &lt;button type="submit"&gt;, &lt;label&gt;
+&lt;header&gt;, &lt;nav&gt;, &lt;main&gt;, &lt;section&gt;, &lt;article&gt;, &lt;aside&gt;, &lt;footer&gt;, &lt;div&gt;, &lt;span&gt;
+&lt;abbr title="National Service Scheme"&gt;NSS&lt;/abbr&gt;, &lt;code&gt;print("Hello")&lt;/code&gt;, &lt;pre&gt;Formatted text&lt;/pre&gt;, &lt;details&gt;, &lt;summary&gt;, &lt;progress value="70" max="100"&gt;, &lt;meter value="0.6"&gt;
+</pre>
+</section>
+
+<section id="css" style="margin-top:20px;background:white;padding:15px;border-radius:10px;">
+<h2>CSS Properties</h2>
+<pre>
+Text: color, font-size, font-family, font-weight, font-style, text-align, text-decoration, line-height, letter-spacing
+Background: background-color, background-image, background-size, background-repeat, background-position
+Box Model: width, height, padding, margin, border, border-radius, box-shadow
+Positioning: position, top, right, bottom, left, z-index
+Layout: display, flex, grid, justify-content, align-items, gap, float, clear, overflow
+Effects: transition, animation, transform, opacity, visibility, cursor, text-shadow
+</pre>
+</section>
+
+<section id="example" style="margin-top:20px;background:white;padding:15px;border-radius:10px;">
+<h2>Example with My Data</h2>
+
+<h3>About Me</h3>
+<p><strong>Name:</strong> G. Balaji Reddy</p>
+<p><strong>Role:</strong> NSS Volunteer at KSRM College</p>
+<p><strong>Hobbies:</strong> Web Development, Social Service, Cricket</p>
+<p><strong>Favorite Quote:</strong> <q>Service to others is the rent you pay for your room here on earth.</q></p>
+<img src="https://via.placeholder.com/150" alt="My Photo" style="border-radius:50%;">
+
+<h3>Activities</h3>
+<ul>
+  <li>Election Duty 2025 at KSRM College</li>
+  <li>International Yoga Day Celebration 2025</li>
+  <li>Food Distribution at RSS for mentally disabled children</li>
+  <li>Organized Blood Donation Camp</li>
+  <li>Planned and Hosted NSS Fest</li>
+</ul>
+
+<h3>Projects</h3>
+<table border="1" cellpadding="5" cellspacing="0">
+<tr><th>Title</th><th>Technology</th></tr>
+<tr><td>Location-Based ML for Infection Prediction</td><td>Python, Machine Learning</td></tr>
+<tr><td>Online Voting System</td><td>HTML, CSS, JS, OTP Auth</td></tr>
+<tr><td>Missing Person Detection</td><td>Python, Django, Face Recognition</td></tr>
+<tr><td>Student Attendance Manager</td><td>Python, Tkinter, CSV</td></tr>
+</table>
+
+<h3>Contact Form</h3>
+<form action="submit.php" method="post">
+<label>Name: <input type="text" name="fullname" placeholder="Your Full Name" required></label><br><br>
+<label>Email: <input type="email" name="email" placeholder="you@example.com" required></label><br><br>
+<label>Message:</label><br>
+<textarea name="message" placeholder="Your Message..." rows="4" cols="30" required></textarea><br><br>
+<select name="reason">
+  <option value="">-- Select Reason --</option>
+  <option value="volunteer">Join NSS</option>
+  <option value="project">Project Collaboration</option>
+  <option value="other">Other</option>
+</select><br><br>
+<button type="submit">Send</button>
+</form>
+
+<details>
+<summary>Extra Info</summary>
+<p>I am passionate about social service and emerging technologies. Currently working on ML and web development projects.</p>
+</details>
+
+<progress value="80" max="100"></progress> Profile Completion<br>
+<meter value="0.9">90%</meter> Confidence Level
+
+</section>
+
+<footer style="text-align:center;margin-top:20px;color:gray;">
+&copy; 2025 G. Balaji Reddy - NSS Volunteer | Built with HTML & CSS
+</footer>
+
+</body>
+</html>

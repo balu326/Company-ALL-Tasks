@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us - Cryptous</title>
+  <link rel="stylesheet" href="style.css">
+  <script>
+    function toggleMenu() {
+      document.querySelector('.nav-links').classList.toggle('active');
+    }
+  </script>
+</head>
+<body>
+  <!-- Header -->
+  <header class="navbar">
+    <div class="container">
+      <div class="logo"><img src="logo.png" alt="Cryptous Logo"><span>Cryptous</span></div>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="company.html">Company</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="pricing.html">Pricing</a></li>
+          <li><a href="team.html">Team</a></li>
+          <li><a href="contact.html" class="active">Contact</a></li>
+          <li><a href="blog.html">Blog</a></li>
+        </ul>
+      </nav>
+      <a href="#" class="btn-outline">Trade Now</a>
+      <span class="menu-toggle" onclick="toggleMenu()">☰</span>
+    </div>
+  </header>
+
+  <!-- Contact Section -->
+  <section class="hero">
+    <h1>Get in Touch</h1>
+    <p>We’d love to hear from you</p>
+  </section>
+
+  <section class="features">
+    <form class="contact-form">
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea placeholder="Your Message" required></textarea>
+      <button type="submit" class="btn">Send Message</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div><h4>Company</h4><p><a href="about.html">About us</a></p><p>Privacy Policy</p></div>
+      <div><h4>Resources</h4><p><a href="pricing.html">Prices</a></p><p><a href="blog.html">Blog</a></p></div>
+    </div>
+  </footer>
+</body>
+</html>

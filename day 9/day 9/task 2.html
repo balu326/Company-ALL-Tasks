@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Report Generator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      width: 350px;
+    }
+    h2 {
+      text-align: center;
+    }
+    pre {
+      background: #f8f8f8;
+      padding: 10px;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Student Report Generator</h2>
+    <pre id="output"></pre>
+  </div>
+
+  <script>
+    function generateReport(student) {
+      let marks = student.marks;
+      let total = 0, count = 0;
+
+      for (let subject in marks) {
+        total += marks[subject];
+        count++;
+      }
+
+      let avg = total / count;
+      let grade = "";
+
+      if (avg >= 90) {
+        grade = "A";
+      } else if (avg >= 75) {
+        grade = "B";
+      } else if (avg >= 50) {
+        grade = "C";
+      } else {
+        grade = "Fail";
+      }
+
+      return `Student: ${student.name}\nAverage: ${avg.toFixed(2)}\nGrade: ${grade}`;
+    }
+
+
+    let student1 = { name: "Balaji", marks: { math: 98, science: 98, english: 98 } };
+    let student2 = { name: "Anita", marks: { math: 95, science: 98, english: 92 } };
+    let student3 = { name: "Rahul", marks: { math: 60, science: 55, english: 50 } };
+    let student4 = { name: "Sita", marks: { math: 40, science: 30, english: 45 } };
+    let student5 = { name: "Arjun", marks: { math: 75, science: 80, english: 70 } };
+
+
+    let reports = [
+      generateReport(student1),
+      generateReport(student2),
+      generateReport(student3),
+      generateReport(student4),
+      generateReport(student5)
+    ];
+
+    document.getElementById("output").textContent = reports.join("\n\n");
+  </script>
+</body>
+</html>

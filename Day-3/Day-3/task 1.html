@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Origins 2025 - KSRM NSS Exhibit</title>
+</head>
+<body>
+
+
+  <noscript>Your browser does not support JavaScript or it is disabled. Some features may not work.</noscript>
+
+
+  <header>
+    <h1>Origins 2025: NSS @ KSRM College</h1>
+    <nav>
+      <a href="#about">About</a> |
+      <a href="#media">Gallery</a> |
+      <a href="#visit">Register</a> |
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+
+  <main>
+
+
+    <section id="about">
+      <article>
+        <h2>About the Exhibit</h2>
+        <p>
+          Welcome to <abbr title="Origins 2025 NSS Exhibit">O25</abbr>, organized by the
+          <strong>KSRM College NSS Volunteers</strong>.
+          The exhibit opens on <time datetime="2025-08-15">August 15th, 2025</time>
+          as part of the Independence Day celebrations.
+        </p>
+        <p>
+          The exhibit showcases <ruby>起源<rt>Origins</rt></ruby> of community service,
+          student leadership, and social impact.
+        </p>
+      </article>
+      <aside>
+        <p><bdi>తెలుగు</bdi> and English guides are available.</p>
+        <p>Did you know? NSS volunteers at KSRM have organized blood donation camps,
+           yoga day events, and food distribution for children with special needs.</p>
+      </aside>
+    </section>
+
+
+    <section id="media">
+      <h2>Gallery</h2>
+
+      <figure>
+        <img src="https://via.placeholder.com/400" alt="NSS Volunteers at KSRM College">
+        <figcaption>NSS Volunteers at KSRM College during Independence Day (2024)</figcaption>
+      </figure>
+
+      <video width="400" controls>
+        <source src="sample-video.mp4" type="video/mp4">
+        <track src="captions.vtt" kind="captions" srclang="en" label="English">
+        Your browser does not support the video element.
+      </video>
+    </section>
+
+
+    <section>
+      <h2>FAQs</h2>
+      <details>
+        <summary>What is Origins 2025?</summary>
+        <p>A student-led NSS exhibit showcasing social initiatives, culture, and service at KSRM College.</p>
+      </details>
+      <details>
+        <summary>Who can attend?</summary>
+        <p>Open to all students, staff, alumni, and local community members.</p>
+      </details>
+    </section>
+
+
+    <section id="visit">
+      <h2>Register for the Exhibit</h2>
+      <form oninput="totalCost.value = tickets.value * 50">
+        <fieldset>
+          <legend>Visitor Registration</legend>
+
+          <label for="name">Full Name:</label>
+          <input type="text" id="name" name="name" required><br><br>
+
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required><br><br>
+
+          <label for="date">Preferred Date:</label>
+          <input type="date" id="date" name="date"><br><br>
+
+          <label for="color">Choose NSS Theme Color:</label>
+          <input type="color" id="color" name="color"><br><br>
+
+          <label for="tickets">Number of Tickets:</label>
+          <input type="number" id="tickets" name="tickets" min="1" max="20" value="1"><br><br>
+
+          <label for="city">City:</label>
+          <input list="cities" id="city" name="city">
+          <datalist id="cities">
+            <option value="Kadapa">
+            <option value="Hyderabad">
+            <option value="Chennai">
+            <option value="Bengaluru">
+          </datalist><br><br>
+
+          <p>Total Contribution: ₹ <output name="totalCost" for="tickets">50</output></p>
+        </fieldset>
+        <button type="submit">Register Now</button>
+      </form>
+    </section>
+
+
+    <section>
+      <h2>Exhibit Progress</h2>
+      <p>Setup Progress:</p>
+      <progress value="60" max="100"></progress> (60% Complete)
+
+      <p>Volunteer Participation Level:</p>
+      <meter value="0.9" min="0" max="1" optimum="0.95">90%</meter>
+    </section>
+
+
+    <section>
+      <h2>Visitor Guidelines</h2>
+      <button onclick="document.getElementById('rules').showModal()">Read Guidelines</button>
+      <dialog id="rules">
+        <h3>Exhibit Guidelines</h3>
+        <p>Please maintain discipline, follow COVID safety norms, and respect the exhibits.</p>
+        <button onclick="document.getElementById('rules').close()">Close</button>
+      </dialog>
+    </section>
+
+
+    <section>
+      <h2>Origins 2025 Logo</h2>
+      <svg width="120" height="120" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="60" cy="60" r="50" stroke="black" stroke-width="3" fill="darkred"/>
+        <text x="50%" y="50%" text-anchor="middle" dy=".3em" font-size="18" fill="white">NSS</text>
+      </svg>
+    </section>
+
+  </main>
+
+
+  <footer id="contact">
+    <h2>Contact Us</h2>
+    <address>
+      KSRM College of Engineering, Kadapa<br>
+      Organized by NSS Volunteers<br>
+      Email: ksrmnss@college.org<br>
+      Phone: +91-9876543210
+    </address>
+    <p>&copy; 2025 NSS KSRM Exhibit</p>
+  </footer>
+
+</body>
+</html>
