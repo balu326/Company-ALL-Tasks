@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Registration Form</title>
+</head>
+<body>
+
+<h1>Registration Form</h1>
+
+<form oninput="result.value = name.value + ' (' + age.value + ' yrs, ' + gender.value + ')'">
+
+  <fieldset>
+    <legend>Personal Information</legend>
+
+    Name: <input type="text" id="name" name="name" placeholder="Enter your name" required><br><br>
+    Email: <input type="email" id="email" name="email" placeholder="example@email.com" required><br><br>
+    Age: <input type="number" id="age" name="age" min="18" max="100" placeholder="18-100" required><br><br>
+    Birthday: <input type="date" id="dob" name="dob" required><br><br>
+    Favorite color: <input type="color" id="color" name="color"><br><br>
+  </fieldset>
+  <br>
+
+  <fieldset>
+    <legend>Profile</legend>
+
+    Upload profile picture: <input type="file" id="profile" name="profile" accept="image/*"><br><br>
+    <input type="checkbox" id="newsletter" name="newsletter"> Subscribe to Newsletter<br><br>
+
+    Gender:
+    <input type="radio" id="male" name="gender" value="Male" required> Male
+    <input type="radio" id="female" name="gender" value="Female"> Female
+    <input type="radio" id="other" name="gender" value="Other"> Other
+  </fieldset>
+  <br>
+
+  <fieldset>
+    <legend>Form Output</legend>
+    Preview: <output name="result"></output>
+  </fieldset>
+  <br>
+
+  <button type="submit">Register</button>
+  <button type="reset">Reset</button>
+
+</form>
+
+</body>
+</html>
