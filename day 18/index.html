@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LuxeMarket - Premium Shopping Experience</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Sticky Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <div class="logo-icon">
+                    <i class="fas fa-gem"></i>
+                </div>
+                <div class="logo-text">
+                    <h1>LuxeMarket</h1>
+                    <span class="logo-tagline">Premium Collection</span>
+                </div>
+            </div>
+            
+            <div class="nav-menu">
+                <a href="#home" class="nav-link active" onclick="scrollToSection('home')">
+                    <i class="fas fa-home"></i>
+                    Home
+                </a>
+                <a href="#shop" class="nav-link" onclick="scrollToSection('shop')">
+                    <i class="fas fa-shopping-bag"></i>
+                    Shop
+                </a>
+                <a href="#offers" class="nav-link" onclick="scrollToSection('offers')">
+                    <i class="fas fa-tags"></i>
+                    Offers
+                </a>
+                <a href="#collections" class="nav-link" onclick="scrollToSection('collections')">
+                    <i class="fas fa-crown"></i>
+                    Collections
+                </a>
+                <a href="#about" class="nav-link" onclick="scrollToSection('about')">
+                    <i class="fas fa-info-circle"></i>
+                    About
+                </a>
+            </div>
+            
+            <div class="nav-actions">
+                <button class="nav-btn search-btn" onclick="focusSearch()">
+                    <i class="fas fa-search"></i>
+                </button>
+                <button class="nav-btn wishlist-btn">
+                    <i class="fas fa-heart"></i>
+                    <span class="wishlist-count">0</span>
+                </button>
+                <button class="nav-btn cart-btn" onclick="toggleCart()">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-text">My Collection</span>
+                    <span class="cart-count">0</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="hero-background">
+                <div class="hero-overlay"></div>
+            </div>
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i class="fas fa-crown"></i>
+                    <span>Luxury Redefined</span>
+                </div>
+                <h2>Discover Exquisite Luxury</h2>
+                <p>Curated collection of the world's finest jewelry, watches, handbags, and accessories for the discerning connoisseur</p>
+                <div class="hero-actions">
+                    <button class="btn btn-primary btn-large" onclick="scrollToSection('shop')">
+                        <i class="fas fa-shopping-bag"></i>
+                        Explore Collection
+                    </button>
+                    <button class="btn btn-secondary btn-large" onclick="scrollToSection('offers')">
+                        <i class="fas fa-percentage"></i>
+                        View Offers
+                    </button>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Special Offers Section -->
+        <section id="offers" class="offers-section">
+            <div class="section-header">
+                <h2>Exclusive Offers</h2>
+                <p>Limited time deals on luxury items</p>
+            </div>
+            <div class="offers-grid">
+                <div class="offer-card featured">
+                    <div class="offer-badge">FEATURED</div>
+                    <div class="offer-content">
+                        <h3>Diamond Collection</h3>
+                        <p class="offer-description">Save up to 25% on selected diamond jewelry</p>
+                        <div class="offer-discount">UP TO 25% OFF</div>
+                        <button class="btn btn-primary" onclick="filterByCategory('jewelry')">
+                            <i class="fas fa-gem"></i>
+                            Shop Diamonds
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="offer-card">
+                    <div class="offer-content">
+                        <h3>Swiss Timepieces</h3>
+                        <p class="offer-description">Exclusive 20% off luxury watches</p>
+                        <div class="offer-discount">20% OFF</div>
+                        <button class="btn btn-primary" onclick="filterByCategory('watches')">
+                            <i class="fas fa-clock"></i>
+                            Shop Watches
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="offer-card">
+                    <div class="offer-content">
+                        <h3>Designer Handbags</h3>
+                        <p class="offer-description">Free shipping on all handbag purchases</p>
+                        <div class="offer-discount">FREE SHIPPING</div>
+                        <button class="btn btn-primary" onclick="filterByCategory('handbags')">
+                            <i class="fas fa-shopping-bag"></i>
+                            Shop Bags
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Premium Collections Section -->
+        <section id="collections" class="collections-section">
+            <div class="section-header">
+                <h2>Premium Collections</h2>
+                <p>Handpicked selections from our finest inventory</p>
+            </div>
+            <div class="collections-grid">
+                <div class="collection-card" onclick="filterByCategory('jewelry')">
+                    <div class="collection-image">
+                        <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?ixlib=rb-4.0.3&w=500" alt="Jewelry Collection">
+                        <div class="collection-overlay">
+                            <i class="fas fa-gem"></i>
+                        </div>
+                    </div>
+                    <div class="collection-content">
+                        <h3>Fine Jewelry</h3>
+                        <p>Exquisite diamonds, precious gems, and timeless pieces</p>
+                        <span class="collection-count">25 Items</span>
+                    </div>
+                </div>
+                
+                <div class="collection-card" onclick="filterByCategory('watches')">
+                    <div class="collection-image">
+                        <img src="https://images.unsplash.com/photo-1524805444758-089113d48a6d?ixlib=rb-4.0.3&w=500" alt="Watch Collection">
+                        <div class="collection-overlay">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                    </div>
+                    <div class="collection-content">
+                        <h3>Luxury Timepieces</h3>
+                        <p>Swiss craftsmanship and precision engineering</p>
+                        <span class="collection-count">15 Items</span>
+                    </div>
+                </div>
+                
+                <div class="collection-card" onclick="filterByCategory('handbags')">
+                    <div class="collection-image">
+                        <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?ixlib=rb-4.0.3&w=500" alt="Handbag Collection">
+                        <div class="collection-overlay">
+                            <i class="fas fa-shopping-bag"></i>
+                        </div>
+                    </div>
+                    <div class="collection-content">
+                        <h3>Designer Handbags</h3>
+                        <p>Handcrafted luxury from the world's finest artisans</p>
+                        <span class="collection-count">20 Items</span>
+                    </div>
+                </div>
+                
+                <div class="collection-card" onclick="filterByCategory('accessories')">
+                    <div class="collection-image">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&w=500" alt="Accessories Collection">
+                        <div class="collection-overlay">
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <div class="collection-content">
+                        <h3>Premium Accessories</h3>
+                        <p>The finishing touches for the perfect look</p>
+                        <span class="collection-count">18 Items</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Filters Section -->
+        <section class="filters">
+            <div class="filters-container">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchInput" placeholder="Search products...">
+                </div>
+                
+                <div class="filter-group">
+                    <select id="categoryFilter">
+                        <option value="">All Categories</option>
+                        <option value="jewelry">Jewelry</option>
+                        <option value="watches">Watches</option>
+                        <option value="handbags">Handbags</option>
+                        <option value="accessories">Accessories</option>
+                    </select>
+                    
+                    <select id="sortFilter">
+                        <option value="name">Sort by Name</option>
+                        <option value="price-low">Price: Low to High</option>
+                        <option value="price-high">Price: High to Low</option>
+                    </select>
+                </div>
+
+                <div class="price-range">
+                    <label for="priceRange">Max Price: $<span id="priceValue">5000</span></label>
+                    <input type="range" id="priceRange" min="0" max="5000" value="5000" step="100">
+                </div>
+            </div>
+        </section>
+
+        <!-- Products Grid -->
+        <section id="shop" class="products">
+            <div class="section-header">
+                <h2>Our Exclusive Collection</h2>
+                <p>Browse our carefully curated selection of luxury items</p>
+            </div>
+            <div class="products-container">
+                <div id="productsGrid" class="products-grid">
+                    <!-- Products will be dynamically loaded here -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Product Modal -->
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-body">
+                <div class="modal-image">
+                    <img id="modalProductImage" src="" alt="">
+                </div>
+                <div class="modal-details">
+                    <h2 id="modalProductName"></h2>
+                    <p id="modalProductDescription"></p>
+                    <div class="price-stock">
+                        <span class="price" id="modalProductPrice"></span>
+                        <span class="stock" id="modalProductStock"></span>
+                    </div>
+                    <button id="addToCartModal" class="btn btn-primary">
+                        <i class="fas fa-cart-plus"></i>
+                        Add to Cart
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- My Collection Drawer -->
+    <div id="cartDrawer" class="cart-drawer">
+        <div class="cart-header">
+            <h3><i class="fas fa-shopping-bag"></i> My Collection</h3>
+            <button class="close-cart" onclick="toggleCart()">&times;</button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <!-- Cart items will be dynamically loaded here -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <strong>Total: $<span id="cartTotal">0.00</span></strong>
+            </div>
+            <div class="cart-actions">
+                <button class="btn btn-secondary" onclick="clearCart()">
+                    <i class="fas fa-trash-alt"></i>
+                    Clear Collection
+                </button>
+                <button class="btn btn-primary" onclick="checkout()">
+                    <i class="fas fa-crown"></i>
+                    Complete Order
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Collection Overlay -->
+    <div id="cartOverlay" class="cart-overlay" onclick="toggleCart()"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
