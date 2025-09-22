@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration Portal</title>
+    <link rel="stylesheet" href="student-styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="form-wrapper">
+            <div class="header">
+                <div class="logo">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <h1 class="title">Student Registration</h1>
+                <p class="subtitle">Join our academic community today</p>
+            </div>
+
+            <form id="registrationForm" class="registration-form">
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+
+                <div class="form-section active">
+                    <h3 class="section-title">
+                        <i class="fas fa-user"></i>
+                        Personal Information
+                    </h3>
+                    
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" required>
+                        <span class="input-focus-border"></span>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="mobile">Mobile Number</label>
+                            <input type="tel" id="mobile" name="mobile" pattern="[0-9]{10}" required>
+                            <span class="input-focus-border"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="age">Age</label>
+                            <input type="number" id="age" name="age" min="16" max="100" required>
+                            <span class="input-focus-border"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="address">Address</label>
+                        <textarea id="address" name="address" rows="3" required></textarea>
+                        <span class="input-focus-border"></span>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="nationality">Nationality</label>
+                            <select id="nationality" name="nationality" required>
+                                <option value="">Select Nationality</option>
+                                <option value="indian">Indian</option>
+                                <option value="american">American</option>
+                                <option value="british">British</option>
+                                <option value="canadian">Canadian</option>
+                                <option value="australian">Australian</option>
+                                <option value="other">Other</option>
+                            </select>
+                            <span class="input-focus-border"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="identity">Identity Number</label>
+                            <input type="text" id="identity" name="identity" required>
+                            <span class="input-focus-border"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3 class="section-title">
+                        <i class="fas fa-map-marker-alt"></i>
+                        Location Details
+                    </h3>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="city">City</label>
+                            <input type="text" id="city" name="city" required>
+                            <span class="input-focus-border"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="state">State</label>
+                            <input type="text" id="state" name="state" required>
+                            <span class="input-focus-border"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="pincode">Pin Code</label>
+                            <input type="text" id="pincode" name="pincode" pattern="[0-9]{6}" required>
+                            <span class="input-focus-border"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="country">Country</label>
+                        <select id="country" name="country" required>
+                            <option value="">Select Country</option>
+                            <option value="india">India</option>
+                            <option value="usa">United States</option>
+                            <option value="uk">United Kingdom</option>
+                            <option value="canada">Canada</option>
+                            <option value="australia">Australia</option>
+                            <option value="other">Other</option>
+                        </select>
+                        <span class="input-focus-border"></span>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3 class="section-title">
+                        <i class="fas fa-file-upload"></i>
+                        Documents & Additional Info
+                    </h3>
+                    
+                    <div class="form-group">
+                        <label for="photo">Upload Photo</label>
+                        <div class="file-upload-container">
+                            <input type="file" id="photo" name="photo" accept="image/*">
+                            <div class="file-upload-area">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <p>Click to upload or drag and drop</p>
+                                <span>JPG, PNG, GIF up to 5MB</span>
+                            </div>
+                            <div class="file-preview"></div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="external">External Details</label>
+                        <textarea id="external" name="external" rows="4" placeholder="Any additional information or special requirements..."></textarea>
+                        <span class="input-focus-border"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="emergencyMobile">Emergency Contact Mobile</label>
+                        <input type="tel" id="emergencyMobile" name="emergencyMobile" pattern="[0-9]{10}">
+                        <span class="input-focus-border"></span>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="reset" class="btn btn-secondary">
+                        <i class="fas fa-undo"></i>
+                        Reset Form
+                    </button>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-paper-plane"></i>
+                        Submit Registration
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <div class="background-animation">
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+            <div class="floating-element"></div>
+        </div>
+    </div>
+
+    <div id="successModal" class="modal">
+        <div class="modal-content">
+            <div class="success-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h2>Registration Successful!</h2>
+            <p>Your application has been submitted successfully. We'll contact you soon.</p>
+            <button class="btn btn-primary" onclick="closeModal()">Continue</button>
+        </div>
+    </div>
+
+    <script src="student-script.js"></script>
+</body>
+</html>

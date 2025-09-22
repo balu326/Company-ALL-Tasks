@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LuxeMarket Admin - Login</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Additional styles specific to login page */
+        .login-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--primary-bg);
+            padding: var(--spacing-md);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .login-container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(147, 112, 219, 0.05) 0%, transparent 70%);
+            animation: rotate360 30s linear infinite;
+            z-index: -1;
+        }
+
+        .login-card {
+            background: var(--card-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: var(--spacing-xl);
+            max-width: 450px;
+            width: 100%;
+            box-shadow: var(--shadow-luxury);
+            backdrop-filter: blur(20px);
+            position: relative;
+            overflow: hidden;
+            animation: slideInUp 0.6s ease-out;
+        }
+
+        .login-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--neon-gradient);
+            animation: shimmer 2s linear infinite;
+            background-size: 200% 100%;
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .login-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .login-logo-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--luxury-gradient);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--primary-bg);
+            box-shadow: var(--shadow-glow);
+            animation: glow 3s ease-in-out infinite;
+        }
+
+        .login-logo-text h1 {
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 2.2rem;
+            font-weight: var(--font-weight-bold);
+            margin: 0;
+            line-height: 1;
+        }
+
+        .login-logo-tagline {
+            font-size: 0.8rem;
+            color: var(--accent-color);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: var(--font-weight-medium);
+        }
+
+        .login-subtitle {
+            color: var(--secondary-color);
+            font-size: 1.1rem;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .admin-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            padding: var(--spacing-xs) var(--spacing-md);
+            border-radius: 50px;
+            color: var(--accent-color);
+            font-size: 0.9rem;
+            font-weight: var(--font-weight-medium);
+            backdrop-filter: blur(10px);
+        }
+
+        .login-form {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-md);
+        }
+
+        .form-group {
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            color: var(--primary-color);
+            margin-bottom: var(--spacing-xs);
+            font-weight: var(--font-weight-medium);
+            font-size: 0.95rem;
+        }
+
+        .form-group i {
+            position: absolute;
+            left: var(--spacing-sm);
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--secondary-color);
+            font-size: 1.1rem;
+            margin-top: 12px;
+        }
+
+        .form-group input {
+            width: 100%;
+            background: var(--accent-bg);
+            border: 2px solid var(--glass-border);
+            color: var(--primary-color);
+            padding: var(--spacing-sm) var(--spacing-sm) var(--spacing-sm) 3rem;
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
+            background: var(--card-bg);
+            transform: scale(1.02);
+        }
+
+        .form-group input::placeholder {
+            color: var(--secondary-color);
+        }
+
+        .login-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: var(--spacing-sm) 0;
+        }
+
+        .remember-me {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--secondary-color);
+            font-size: 0.9rem;
+        }
+
+        .remember-me input[type="checkbox"] {
+            width: auto;
+            margin: 0;
+        }
+
+        .forgot-password {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .forgot-password:hover {
+            color: var(--accent-hover);
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+        }
+
+        .login-btn {
+            background: var(--accent-gradient);
+            color: var(--primary-bg);
+            border: none;
+            padding: var(--spacing-md) var(--spacing-lg);
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: var(--font-weight-medium);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: var(--spacing-sm);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .login-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--neon-gradient);
+            transition: left 0.3s;
+            z-index: -1;
+            opacity: 0.8;
+        }
+
+        .login-btn:hover::before {
+            left: 0;
+        }
+
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-glow);
+            color: white;
+        }
+
+        .login-btn:active {
+            transform: translateY(0);
+            animation: bounce 0.5s;
+        }
+
+        .login-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .back-to-store {
+            text-align: center;
+            margin-top: var(--spacing-lg);
+            padding-top: var(--spacing-md);
+            border-top: 1px solid var(--glass-border);
+        }
+
+        .back-to-store a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .back-to-store a:hover {
+            color: var(--accent-color);
+        }
+
+        .error-message {
+            background: rgba(255, 71, 87, 0.1);
+            color: var(--danger-color);
+            border: 1px solid rgba(255, 71, 87, 0.3);
+            padding: var(--spacing-sm);
+            border-radius: 8px;
+            margin-bottom: var(--spacing-md);
+            font-size: 0.9rem;
+            display: none;
+            animation: slideInUp 0.3s ease-out;
+        }
+
+        .loading {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .spinner {
+            width: 20px;
+            height: 20px;
+            border: 2px solid transparent;
+            border-top: 2px solid currentColor;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Mobile responsive */
+        @media (max-width: 480px) {
+            .login-container {
+                padding: var(--spacing-sm);
+            }
+            
+            .login-card {
+                padding: var(--spacing-lg);
+            }
+            
+            .login-logo-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+            }
+            
+            .login-logo-text h1 {
+                font-size: 1.8rem;
+            }
+            
+            .login-options {
+                flex-direction: column;
+                gap: var(--spacing-sm);
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-card">
+            <div class="login-header">
+                <div class="login-logo">
+                    <div class="login-logo-icon">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <div class="login-logo-text">
+                        <h1>LuxeMarket</h1>
+                        <div class="login-logo-tagline">Admin Access</div>
+                    </div>
+                </div>
+                <div class="login-subtitle">Welcome back, Administrator</div>
+                <div class="admin-badge">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Secure Admin Portal</span>
+                </div>
+            </div>
+
+            <form class="login-form" id="loginForm">
+                <div id="errorMessage" class="error-message"></div>
+                
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <i class="fas fa-user"></i>
+                    <input type="text" id="username" name="username" placeholder="Enter your username" required autocomplete="username">
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required autocomplete="current-password">
+                </div>
+
+                <div class="login-options">
+                    <label class="remember-me">
+                        <input type="checkbox" id="rememberMe">
+                        Remember me
+                    </label>
+                    <a href="#" class="forgot-password">Forgot password?</a>
+                </div>
+
+                <button type="submit" class="login-btn" id="loginBtn">
+                    <span class="login-text">
+                        <i class="fas fa-sign-in-alt"></i>
+                        Access Dashboard
+                    </span>
+                </button>
+            </form>
+
+            <div class="back-to-store">
+                <a href="index.html">
+                    <i class="fas fa-arrow-left"></i>
+                    Back to Store
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="auth.js"></script>
+</body>
+</html>

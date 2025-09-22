@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Star Patterns — Right Triangle, Inverted, Pyramid, Diamond</title>
+  <style>
+    :root{--bg:#0f172a;--card:#0b1220;--txt:#e6edf3;--muted:#9aa7bf}
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;min-height:100vh;margin:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#07102a 0%, #091424 100%);color:var(--txt);padding:28px}
+    .wrap{max-width:900px;width:100%;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:12px;padding:20px;box-shadow:0 8px 30px rgba(2,6,23,0.6)}
+    h1{margin:0 0 12px;font-size:20px}
+    .controls{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
+    label{font-size:13px;color:var(--muted)}
+    input[type=number]{width:84px;padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:var(--txt)}
+    button{padding:8px 12px;border-radius:8px;border:none;background:#1f6feb;color:white;cursor:pointer;font-weight:600}
+    button.secondary{background:#2d3748}
+    .output-area{display:flex;gap:18px;flex-wrap:wrap}
+    .card{flex:1 1 280px;background:var(--card);padding:12px;border-radius:10px;min-height:160px}
+    .card h2{font-size:14px;margin:0 0 8px;color:#dbeafe}
+    pre{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, 'Courier New', monospace;white-space:pre;line-height:1.1;font-size:16px;color:var(--txt);overflow:auto}
+    .actions{display:flex;gap:8px;margin-top:8px}
+    .small{padding:6px 8px;font-size:13px}
+    footer{margin-top:12px;color:var(--muted);font-size:12px}
+    @media (max-width:640px){.output-area{flex-direction:column} .card{min-width:100%}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Star Patterns — Right Triangle, Inverted, Pyramid, Diamond</h1>
+    <div class="controls">
+      <label>Rows: <input id="rows" type="number" min="1" max="40" value="5"></label>
+      <button id="renderRight">Right-angled Triangle</button>
+      <button id="renderInverted">Inverted Right-angled</button>
+      <button id="renderPyramid">Pyramid</button>
+      <button id="renderDiamond">Diamond</button>
+      <button id="renderAll" class="secondary">Render All</button>
+      <button id="clear" class="secondary small">Clear</button>
+    </div>
+
+    <div class="output-area">
+      <div class="card">
+        <h2>Right-angled Triangle</h2>
+        <pre id="rightPre"></pre>
+        <div class="actions"><button class="small" data-copy-target="rightPre">Copy</button></div>
+      </div>
+
+      <div class="card">
+        <h2>Inverted Right-angled</h2>
+        <pre id="invertedPre"></pre>
+        <div class="actions"><button class="small" data-copy-target="invertedPre">Copy</button></div>
+      </div>
+
+      <div class="card">
+        <h2>Pyramid</h2>
+        <pre id="pyramidPre"></pre>
+        <div class="actions"><button class="small" data-copy-target="pyramidPre">Copy</button></div>
+      </div>
+
+      <div class="card">
+        <h2>Diamond</h2>
+        <pre id="diamondPre"></pre>
+        <div class="actions"><button class="small" data-copy-target="diamondPre">Copy</button></div>
+      </div>
+    </div>
+
+    <footer>Tip: increase "Rows" to see larger patterns. You can copy each pattern to paste into a text file.</footer>
+  </div>
+
+  <script>
+    // Utility: repeat a string n times
+    function repeat(str, n){ return new Array(n+1).join(str); }
+
+    function rightTriangle(n){
+      let out = '';
+      for(let i=1;i<=n;i++){
+        out += repeat('* ', i).trimEnd();
+        if(i<n) out += '\n';
+      }
+      return out;
+    }
+
+    function invertedRight(n){
+      let out = '';
+      for(let i=n;i>=1;i--){
+        out += repeat('* ', i).trimEnd();
+        if(i>1) out += '\n';
+      }
+      return out;
+    }
+
+    function pyramid(n){
+      let out = '';
+      for(let i=1;i<=n;i++){
+        const stars = 2*i - 1;
+        const spaces = n - i;
+        out += repeat('  ', spaces) + repeat('* ', stars).trimEnd();
+        if(i<n) out += '\n';
+      }
+      return out;
+    }
+
+    function diamond(n){
+      let out = '';
+      // top (including middle)
+      for(let i=1;i<=n;i++){
+        const stars = 2*i - 1;
+        const spaces = n - i;
+        out += repeat('  ', spaces) + repeat('* ', stars).trimEnd() + '\n';
+      }
+      // bottom
+      for(let i=n-1;i>=1;i--){
+        const stars = 2*i - 1;
+        const spaces = n - i;
+        out += repeat('  ', spaces) + repeat('* ', stars).trimEnd();
+        if(i>1) out += '\n';
+      }
+      return out;
+    }
+
+    // DOM helpers
+    const rowsInput = document.getElementById('rows');
+    const rightPre = document.getElementById('rightPre');
+    const invertedPre = document.getElementById('invertedPre');
+    const pyramidPre = document.getElementById('pyramidPre');
+    const diamondPre = document.getElementById('diamondPre');
+
+    document.getElementById('renderRight').addEventListener('click', ()=>{
+      const n = Math.max(1, Math.min(40, +rowsInput.value || 5));
+      rightPre.textContent = rightTriangle(n);
+    });
+
+    document.getElementById('renderInverted').addEventListener('click', ()=>{
+      const n = Math.max(1, Math.min(40, +rowsInput.value || 5));
+      invertedPre.textContent = invertedRight(n);
+    });
+
+    document.getElementById('renderPyramid').addEventListener('click', ()=>{
+      const n = Math.max(1, Math.min(20, +rowsInput.value || 5));
+      pyramidPre.textContent = pyramid(n);
+    });
+
+    document.getElementById('renderDiamond').addEventListener('click', ()=>{
+      const n = Math.max(1, Math.min(20, +rowsInput.value || 5));
+      diamondPre.textContent = diamond(n);
+    });
+
+    document.getElementById('renderAll').addEventListener('click', ()=>{
+      const n = Math.max(1, Math.min(20, +rowsInput.value || 5));
+      rightPre.textContent = rightTriangle(n);
+      invertedPre.textContent = invertedRight(n);
+      pyramidPre.textContent = pyramid(n);
+      diamondPre.textContent = diamond(n);
+    });
+
+    document.getElementById('clear').addEventListener('click', ()=>{
+      rightPre.textContent = invertedPre.textContent = pyramidPre.textContent = diamondPre.textContent = '';
+    });
+
+    // copy buttons
+    document.querySelectorAll('[data-copy-target]').forEach(btn=>{
+      btn.addEventListener('click', async ()=>{
+        const target = document.getElementById(btn.dataset.copyTarget);
+        try{
+          await navigator.clipboard.writeText(target.textContent || '');
+          btn.textContent = 'Copied!';
+          setTimeout(()=> btn.textContent = 'Copy', 1000);
+        }catch(e){
+          alert('Copy failed — select the pattern and press Ctrl+C/Cmd+C');
+        }
+      });
+    });
+
+    // render default patterns on load
+    document.getElementById('renderAll').click();
+  </script>
+</body>
+</html>
